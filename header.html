@@ -6,8 +6,8 @@
         </div>
         <div class=vm-desk-logo>
             <!-- <div id=vm-logo-image></div>-->
-            
-            <span id=vm-logo-label-A>COMEBACK </span><div id=timeing></div>
+            <div class="pulse"><span>
+           <img src="components/images/comeback.png" alt=""></span></div><div id=timeing></div>
             <!--<span id=vm-logo-label-B>Modular distributed web application</span>-->
             
         </div>
@@ -54,7 +54,7 @@
             $vm.load_module(href,$vm.root_layout_content_slot,{});
         }
         // Set the date we're counting down to
-        var countDownDate = new Date("July 1, 2019 15:00:00").getTime();
+        var countDownDate = new Date("July 31, 2019 15:00:00").getTime();
 
         // Update the count down every 1 second
         var x = setInterval(function() {
@@ -85,6 +85,48 @@
         $vm.header_ready=1;
         //------------------------------------
     </script>
+    <style>
+/*    $circle-radius: 36px;
+    $blue: rgba(90, 189, 222, 1);
+*/
+body {
+  background: #222;
+  position: relative;
+}
+
+.pulse {
+/*  position: absolute;
+  top: 50px;
+  left: 50%;
+  margin-left: -$circle-radius;
+  width: ($circle-radius * 2);
+  height: ($circle-radius * 2);
+  line-height: ($circle-radius * 2);*/
+  
+  text-align: left;
+}
+.pulse span {
+  content: '';
+  position: absolute;
+  border-radius: 100%;
+  animation: da-pulse 2s ease-in-out 0s infinite;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+@keyframes da-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  48%,
+  52% {
+    transform: scale(.9);
+    opacity: 0.8;
+  }
+}</style>
     <style>
         /*----------------------*/
         #header{

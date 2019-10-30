@@ -1,30 +1,50 @@
 <div id=D__ID>
-    <div  style='max-width:800px;text-align: center'>
-        <div class=vm-mobile>
-            <span id=vm-mobile_title class=vm-mobile-title>            <div class="pulse"><span>
-                <img src="components/images/comeback.png" class="image" alt=""></span></div></span>
-            <a id="vm-hamburger_button" class=vm-hamburger-button onclick="$vm.toggle()"><i class="fa fa-bars"></i></a>
+    <div class="vm-header mt-0 row container__ID" >
+            <div class="vm-menu-bar col-4">
+                <span class=vm-header-bar onclick="$vm.openNav()"><img src="m/images/bars.png" ><img></span>
+            </div>
+            <div class="col-4 pt-3">
+                <a class=vm-header-home href="?home" ><img src="m/images/logo-black.png" ></img></a>
+            </div>
+            <div class="col-4">
+                    <a class=vm-header-cart href="?cart" ><div class="cart__ID"><img src="m/images/cart.png" ></img><div id="cart_size__ID" class="centered">0</div></div></a>
+            </div>
+<!--
+        <div class=vm-header>
+            <div class=vm-menu>
+                <a class=vm-header-home href="?cart" ><img src="m/images/cart.png" ></img></a>
+            </div>
+            <span class=vm-header-bar onclick="$vm.openNav()"><img src="m/images/bars.png" ></span>
         </div>
-        <div class=vm-desk-logo>
-            <!-- <div id=vm-logo-image></div>-->
-            <div class="pulse"><span>
-           <img src="components/images/comeback.png" alt=""></span></div><div id=timeing></div>
-            <!--<span id=vm-logo-label-B>Modular distributed web application</span>-->
-            
-        </div>
-        <div menu id="vm-menu">
-            <a href="?/founder">FOUNDER</a>
-            <a href="?/community">COMMUNITY</a>
-            <a href="?/contact">CONTACT</a>
-            <!--<a href="https://backoffice.wappsystem.com.au/">Back Office</a>-->
-            <!--<a id=vm_signin onclick="$vm.signin();"><i class="fa fa-user"></i> Sign In</a>-->
-            <!--<a class=vm-hide id=vm_signout onclick=$vm.signout()><i class="fa fa-user"></i> Sign Out</a>-->
+        <div id=g_header style='text-align: center;padding-top:10px;'><span style='font-size:56px'></span></div>
+-->
+        <div id="mySidenav__ID" class="sidenav__ID vm-menu">
+            <a onclick="$vm.closeNav()"><img class="closebtn__ID" src="m/images/close-btn.png" ></img></a>
+            <div class=sidenav_links__ID>
+                <a href="?/p1">Comeback</a>
+                <a href="?/p2">Shop</a>
+                <a href="?/p3">Community</a>
+                <a href="?/p4">Our Story</a>
+                <a href="?/p5">Contact</a>
+            </div>
         </div>
     </div>
     <script>
+
+        $vm.openNav=function() {
+            document.getElementById("mySidenav__ID").style.width = "350px";
+        }
+        $vm.closeNav=function(){
+            document.getElementById("mySidenav__ID").style.width = "0";
+        }
+
+
+        
+
         //------------------------------------
         $('#vm-mobile_title').on('click',function(){ $vm.load_module('home',$vm.root_layout_content_slot,{}) })
         $('.vm-desk-logo').on('click',function(){ $vm.load_module('home',$vm.root_layout_content_slot,{}) })
+        //$('.vm-desk-logo').on('click',function(){ $vm.test(); })
         //------------------------------------
         $('.vm-dropdown').on('click',function(e){
             var d=$(this).find('.vm-dropdown-content');
@@ -34,138 +54,100 @@
         $(".vm-dropdown").mouseleave(function (){  $(".vm-dropdown-content").hide();  })
         $(".vm-dropdown-content").mouseleave(function (){  $(this).hide();  })
         $vm.toggle=function() {
+            /*
             var x = document.getElementById("vm-menu");
             if(x.className==='') x.className="responsive";
             else x.className="";
+            */
         }
         //------------------------------------
-        $('#vm-menu a').on('click',function(e){
+        $('.vm-menu a').on('click',function(e){
             e.preventDefault();
+            var dev=$(this).attr('dev');
             var href=$(this).attr('href');
-            if(href!=undefined && href!='' && href.substring(0,8)=="https://"){ window.open(href); return;}
-            if(href!=undefined && href!=''){
-                if($vm.menu_click!=undefined) $vm.menu_click(href);
+            if(dev==undefined){
+                if(href!=undefined && href!='' && href.substring(0,8)=="https://"){ window.open(href); return;}
+                if(href!=undefined && href!=''){
+                    if($vm.menu_click!=undefined) $vm.menu_click(href);
+                }
+            }
+            else{
+                if(href=='sys_settings')  $vm.sys_settings();
+                else if(href=='sys_structure') $vm.sys_structure();
             }
             $vm.toggle();
+            $vm.closeNav();
         })
+        //------------------------------------
+        /*
+        $('.vm-menu a').on('click',function(e){
+            var sec=$(this).attr('section');
+            if(sec==undefined){
+                e.preventDefault();
+                var href=$(this).attr('href');
+                if(href!=undefined && href!='' && href.substring(0,8)=="https://"){ window.open(href); return;}
+                if(href!=undefined && href!=''){
+                    if($vm.menu_click!=undefined) $vm.menu_click(href);
+                }
+                $vm.toggle();
+            }
+            else{
+                $vm.load_module('home',$vm.root_layout_content_slot,{});    
+            }
+            $vm.closeNav();
+        })
+        */
         //------------------------------------
         $vm.menu_click=function(href){
             href=href.replace('?\/','');
             href=href.replace(/\//g,'_');
             $vm.load_module(href,$vm.root_layout_content_slot,{});
         }
-        // Set the date we're counting down to
-        var countDownDate = new Date("July 31, 2019 15:00:00").getTime();
-
-        // Update the count down every 1 second
-        var x = setInterval(function() {
-
-        // Get today's date and time
-        var now = new Date().getTime();
-
-        // Find the distance between now and the count down date
-        var distance = countDownDate - now;
-
-        // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        // Display the result in the element with id="demo"
-        document.getElementById("timeing").innerHTML = days + " Days " + hours + "h "
-        + minutes + "m " + seconds + "s ";
-
-        // If the count down is finished, write some text 
-        if (distance < 0) {
-            clearInterval(x);
-            document.getElementById("timeing").innerHTML = "EXPIRED";
-        }
-        }, 1000);
         //------------------------------------
         $vm.header_ready=1;
         //------------------------------------
     </script>
     <style>
-/*    $circle-radius: 36px;
-    $blue: rgba(90, 189, 222, 1);
-*/
-body {
-  background: #222;
-  position: relative;
-}
-
-.pulse {
-/*  position: absolute;
-  top: 50px;
-  left: 50%;
-  margin-left: -$circle-radius;
-  width: ($circle-radius * 2);
-  height: ($circle-radius * 2);
-  line-height: ($circle-radius * 2);*/
-  
-  text-align: left;
-}
-.pulse span {
-  content: '';
-  position: absolute;
-  border-radius: 100%;
-  animation: da-pulse 2s ease-in-out 0s infinite;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-@keyframes da-pulse {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.4;
-  }
-  48%,
-  52% {
-    transform: scale(.9);
-    opacity: 0.8;
-  }
-}</style>
-    <style>
         /*----------------------*/
         #header{
-            margin: 0px 0px 12px calc((100% - 1000px) * 0.5);
-            text-align:-webkit-center;
             height:100px;
             position:fixed;
             top:0;
             left:0;
-            width:1000px;
-            background:rgba(0,0,0,0.7);
+            width:100%;
+            background:rgba(255,255,255,0.86);
             z-index:10;
+            /*border-bottom: 1px solid #333;*/
         }
         .vm-desk-logo{float:left;padding:36px 30px 0 30px;cursor:pointer;}
-        #vm-menu{ 
-            float:right;padding:30px 30px 0 30px;
-            font-family: 'Times New Roman', Times, serif;
-            }
+        #vm-menu{float:right; padding:50px 30px 0 30px;}
         @media screen and (max-width: 1200px){
             #header{height:50px;}
             .vm-desk-logo{display:none;}
             #vm-menu{padding:0;}
-            .pulse {text-align: center;}
-            .image{height:50px;}            
-            
         }
         :root {
+            --header-color: #fff;
             --menu-color: #fff;
-            --menu-hover-color: #fff;
+            --menu-hover-color: #29eca6;
             --menu-hover-background-color: #555;
+
             --dropdown-menu-color:#666;
             --dropdown-menu-background-color:#f9f9f9;
             --dropdown-menu-hover-color:#555;
             --dropdown-menu-hover-background-color:#ddd;
             --dropdown-menu-border-color:#ddd;
+
             --mobile-title-color:#fff;
             --mobile-hamburger-color:#fff;
             --mobile-menu-background-color:#1c3144;
+        }
+        .vm-header, .vm-header a{
+            color:var(--header-color);
+        }
+        .container__ID{
+            padding-left: 3rem;
+            padding-right: 7rem;
         }
         #vm-logo-image{
             margin-top: -32px;
@@ -179,25 +161,21 @@ body {
             cursor:pointer;
         }
         #vm-logo-label-A{
-            font-family: 'Times New Roman', Times, serif;
+            font-family: Arial, sans-serif;
             color:#fff;
             font-size: 200%;
             line-height:10px;
             display:inline-block;
+            font-weight: 700;
         }
         #vm-logo-label-B{
-            font-family: 'Times New Roman', Times, serif;
+            font-family: Arial, sans-serif;
             color:#fff;
             font-size: 93%;
             line-height:80%;
             display:inline-block;
         }
         /*menu*/
-        #vm-menu {
-            overflow: hidden;
-            display:inline-block;
-            float:right;
-        }
         #vm-menu > a {
             color:var(--menu-color);
             float: left;
@@ -329,5 +307,86 @@ body {
             from {max-height: 0px;}
             to {max-height: 1000px;}
         }
+
+
+        .sidenav__ID {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: rgb(233, 230, 222);
+            overflow-x: hidden;
+            transition: 0.5s;
+        }
+
+        .sidenav__ID a {
+            font-family: "Montserrat thin";
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #000;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav__ID a:hover {
+            font-family: "Montserrat";
+        }
+        .sidenav_links__ID{
+            padding-top: 100px;
+        }
+        .closebtn__ID{
+            padding: 20px 0 0 70px;
+            cursor: pointer;
+        }
+        .vm-header-bar{
+            float:left;
+            font-size:30px;
+            cursor:pointer;
+            margin:20px 0 0 50px;
+        }
+        .vm-header-home{
+            font-size:30px;
+            cursor:pointer;
+            margin:20px 0 0 50px;
+        }
+        .vm-header-cart{
+            float:right;
+            font-size:30px;
+            cursor:pointer;
+            margin:20px 0 0 50px;
+        }
+        .cart__ID{
+            position: relative;
+            text-align: center;
+            color:#000;
+            font-size: 1rem;
+        }
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @media screen and (max-height: 450px) {
+        }
+        @media screen and (max-width: 1200px) {
+            .sidenav {padding-top: 15px;}
+            .sidenav a {font-size: 18px;}
+            .vm-header-bar{
+                margin:5px 0 0 20px;
+            }
+            .vm-header-home{
+                margin:5px 20px 0 0;
+            }
+        }
     </style>
 </div>
+    
+
+
+
+

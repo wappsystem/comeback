@@ -1,12 +1,12 @@
 <div id=D__ID>
     <div class="vm-header mt-0 row container__ID" >
-            <div class="vm-menu-bar col-4">
-                <span class=vm-header-bar onclick="$vm.openNav()"><img src="m/images/bars.png" ><img></span>
+            <div class="vm-menu-bar col-4 p-0">
+                <span class=vm-header-bar onclick="$vm.openNav()"><img class=bars__ID src="m/images/bars.png" ><img></span>
             </div>
-            <div class="col-4 pt-3">
-                <a class=vm-header-home href="?home" ><img src="m/images/logo-black.png" ></img></a>
+            <div class="col-4 p-0">
+                <a class=vm-header-home href="?home" ><img  id=logo__ID src="m/images/logo-black.png" ></img></a>
             </div>
-            <div class="col-4">
+            <div class="col-4" id=cart_img__ID>
                     <a class=vm-header-cart href="?cart" ><div class="cart__ID"><img src="m/images/cart.png" ></img><div id="cart_size__ID" class="centered">0</div></div></a>
             </div>
 <!--
@@ -146,8 +146,6 @@
             color:var(--header-color);
         }
         .container__ID{
-            padding-left: 3rem;
-            padding-right: 7rem;
         }
         #vm-logo-image{
             margin-top: -32px;
@@ -322,17 +320,17 @@
         }
 
         .sidenav__ID a {
-            font-family: "Montserrat thin";
-            padding: 8px 8px 8px 32px;
+            font-family: "Montserrat";
+            font-weight: lighter;
             text-decoration: none;
             font-size: 25px;
             color: #000;
             display: block;
-            transition: 0.3s;
         }
 
         .sidenav__ID a:hover {
             font-family: "Montserrat";
+            font-weight: normal;
         }
         .sidenav_links__ID{
             padding-top: 100px;
@@ -345,24 +343,23 @@
             float:left;
             font-size:30px;
             cursor:pointer;
-            margin:20px 0 0 50px;
         }
         .vm-header-home{
+            float: none;
             font-size:30px;
             cursor:pointer;
-            margin:20px 0 0 50px;
         }
         .vm-header-cart{
             float:right;
             font-size:30px;
             cursor:pointer;
-            margin:20px 0 0 50px;
         }
         .cart__ID{
             position: relative;
             text-align: center;
             color:#000;
             font-size: 1rem;
+            cursor: pointer;            
         }
         .centered {
             position: absolute;
@@ -370,6 +367,20 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
+        .bars__ID{
+            padding: 40px 0 0 82px;
+            cursor: pointer;
+        }
+        #logo__ID {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 40px; ;
+        } 
+        #cart_img__ID{
+            padding-top:35px;
+            padding-right: 60px;
+        }       
 
         @media screen and (max-height: 450px) {
         }

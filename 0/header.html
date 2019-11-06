@@ -7,7 +7,7 @@
                 <a class=vm-header-home href="?home" ><img  id=logo__ID src="m/images/logo-black.png" ></img></a>
             </div>
             <div class="col-4" id=cart_img__ID>
-                    <a class=vm-header-cart href="?cart" ><div class="cart__ID"><img src="m/images/cart.png" ></img><div id="cart_size__ID" class="centered">0</div></div></a>
+                    <a class=vm-header-cart onclick="$vm.openCart()" ><div class="cart__ID"><img src="m/images/cart.png" ></img><div id="cart_size__ID" class="centered">0</div></div></a>
             </div>
 <!--
         <div class=vm-header>
@@ -28,6 +28,19 @@
                 <a href="?/p5">Contact</a>
             </div>
         </div>
+        <div id="rightsidenav__ID" class="rightsidenav__ID">
+            <a onclick="$vm.closeCart()"><img class="closerightbtn__ID" src="m/images/close-btn-white.png" ></img></a>
+            <div class="rightsidenav_links__ID">
+                <hr>
+                <p style='font-size: 24px;'>Cart</p>
+                <p style='font-size: 16px;'>Comeback Complement, 215G</p>
+                <p style='font-size: 16px;'>1 x $75.00</p>
+                <hr>
+                <p class="letterspace" style='font-size: 15px;font-weight:bold;'>SUBTOTAL: $75.00</p>
+                <p>&nbsp;</p>
+                <p><button type="button" id=view_cart__ID class="btn-outline-light text-light">VIEW &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="m/images/right-arrow.png"  ></img></button></p>
+            </div>
+        </div>
     </div>
     <script>
 
@@ -36,6 +49,12 @@
         }
         $vm.closeNav=function(){
             document.getElementById("mySidenav__ID").style.width = "0";
+        }
+        $vm.openCart=function() {
+            document.getElementById("rightsidenav__ID").style.width = "550px";
+        }
+        $vm.closeCart=function(){
+            document.getElementById("rightsidenav__ID").style.width = "0";
         }
 
 
@@ -111,11 +130,12 @@
         /*----------------------*/
         #header{
             height:100px;
+            /*padding-bottom:29px;*/
             position:fixed;
             top:0;
             left:0;
             width:100%;
-            background:rgba(255,255,255,0.86);
+            background:rgb(233, 230, 222);
             z-index:10;
             /*border-bottom: 1px solid #333;*/
         }
@@ -305,8 +325,22 @@
             from {max-height: 0px;}
             to {max-height: 1000px;}
         }
-
-
+        #view_cart__ID{
+            display: inline-block;
+            font-weight: 400;
+            text-align: center;
+            vertical-align: middle;
+            background-color: transparent;
+            border: 1px solid;
+            padding: 1.5rem 2rem;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            font-weight: bold;
+            letter-spacing: 0.2rem;
+        }
+        .letterspace{
+            letter-spacing: 0.2rem;
+        }
         .sidenav__ID {
             height: 100%;
             width: 0;
@@ -334,9 +368,59 @@
         }
         .sidenav_links__ID{
             padding-top: 100px;
+            padding-left: 40px;
         }
+        .rightsidenav_links__ID{
+            padding-top: 10px;
+            padding-left: 0;
+            color:rgb(233, 230, 222);
+        }
+        .rightsidenav_links__ID p{
+            text-align:left;
+            padding-left: 60px;
+        }
+        .rightsidenav__ID {
+            font-family: "Montserrat";
+            font-weight: lighter;
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            background-color: rgb(0, 0, 0);
+            overflow-x: hidden;
+            transition: 0.5s;
+        }
+
+        .rightsidenav__ID a {
+            font-family: "Montserrat";
+            font-weight: lighter;
+            text-decoration: none;
+            font-size: 25px;
+            color: #fff;
+            display: block;
+            text-align:right;
+        }
+        .rightsidenav__ID hr {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border: 0;
+            border-top: 1px solid rgba(255, 255, 255, 1);
+            margin-left: 60px;
+            margin-right: 50px;
+        }
+        .rightsidenav__ID a:hover {
+            font-family: "Montserrat";
+            font-weight: normal;
+        }
+        .closerightbtn__ID{
+            padding: 40px 50px 0 0;
+            cursor: pointer;
+        }
+
         .closebtn__ID{
-            padding: 20px 0 0 70px;
+            padding: 35px 0 0 70px;
             cursor: pointer;
         }
         .vm-header-bar{

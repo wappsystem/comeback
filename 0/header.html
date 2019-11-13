@@ -1,13 +1,13 @@
 <div id=D__ID>
     <div class="vm-header mt-0 row container__ID" >
-            <div class="vm-menu-bar col-4 p-0">
-                <span class=vm-header-bar onclick="$vm.openNav()"><img class=bars__ID src="m/images/bars.png" ><img></span>
+            <div class="vm-header-bar col-2"><div class="clearfix visible-xs"></div>
+                <span class='' onclick="$vm.openNav()"><img class=bars__ID src="m/images/bars.png" ><img></span>
             </div>
-            <div class="col-4 p-0">
+            <div class="col-8"><div class="clearfix visible-xs"></div>
                 <a class=vm-header-home href="?home" ><img  id=logo__ID src="m/images/logo-black.png" ></img></a>
             </div>
-            <div class="col-4" id=cart_img__ID>
-                    <a class=vm-header-cart onclick="$vm.openCart()" ><div class="cart__ID"><img src="m/images/cart.png" ></img><div id="cart_size__ID" class="centered">0</div></div></a>
+            <div class="col-2" id=cart_img__ID><div class="clearfix visible-xs"></div>
+                    <a class=vm-header-cart onclick="$vm.openCart()" ><div class="cart__ID"><img class=cart_i__ID src="m/images/cart.png" ></img><div id="cart_size__ID" class="centered">0</div></div></a>
             </div>
 <!--
         <div class=vm-header>
@@ -19,7 +19,7 @@
         <div id=g_header style='text-align: center;padding-top:10px;'><span style='font-size:56px'></span></div>
 -->
         <div id="mySidenav__ID" class="sidenav__ID vm-menu">
-            <a onclick="$vm.closeNav()"><img class="closebtn__ID" src="m/images/close-btn.png" ></img></a>
+            <a onclick="$vm.closeNav()"><img id=close__ID class="closebtn__ID" src="m/images/close-btn.png" ></img></a>
             <div class=sidenav_links__ID>
                 <a href="?/p1">Comeback</a>
                 <a href="?/p2">Shop</a>
@@ -29,7 +29,7 @@
             </div>
         </div>
         <div id="rightsidenav__ID" class="rightsidenav__ID">
-            <a onclick="$vm.closeCart()"><img class="closerightbtn__ID" src="m/images/close-btn-white.png" ></img></a>
+            <a onclick="$vm.closeCart()"><img id=closeright__ID class="closerightbtn__ID" src="m/images/close-btn-white.png" ></img></a>
             <div class="rightsidenav_links__ID">
                 <hr>
                 <p style='font-size: 24px;'>Cart</p>
@@ -51,15 +51,20 @@
             document.getElementById("mySidenav__ID").style.width = "0";
         }
         $vm.openCart=function() {
-            document.getElementById("rightsidenav__ID").style.width = "550px";
+            if($(window).width()>600){
+                document.getElementById("rightsidenav__ID").style.width = "550px";
+            }
+            else{
+                document.getElementById("rightsidenav__ID").style.width = "350px";
+            }
         }
         $vm.closeCart=function(){
             document.getElementById("rightsidenav__ID").style.width = "0";
         }
 
 
-        
-
+        $('#close__ID').css('padding-left',-20+$(window).width()*0.08+"px");
+        $('#closeright__ID').css('padding-right',-20+$(window).width()*0.08+"px");
         //------------------------------------
         $('#vm-mobile_title').on('click',function(){ $vm.load_module('home',$vm.root_layout_content_slot,{}) })
         $('.vm-desk-logo').on('click',function(){ $vm.load_module('home',$vm.root_layout_content_slot,{}) })
@@ -141,8 +146,8 @@
         }
         .vm-desk-logo{float:left;padding:36px 30px 0 30px;cursor:pointer;}
         #vm-menu{float:right; padding:50px 30px 0 30px;}
-        @media screen and (max-width: 1200px){
-            #header{height:50px;}
+        @media screen and (max-width: 900px){
+            #header{height:100px;}
             .vm-desk-logo{display:none;}
             #vm-menu{padding:0;}
         }
@@ -338,6 +343,11 @@
             font-weight: bold;
             letter-spacing: 0.2rem;
         }
+        .cart_i__ID{
+            display: block;
+            margin-left: auto;
+            margin-right: auto; 
+        }
         .letterspace{
             letter-spacing: 0.2rem;
         }
@@ -420,11 +430,12 @@
         }
 
         .closebtn__ID{
-            padding: 35px 0 0 70px;
+            padding-top: 35px;/* 0 0 70px;*/
             cursor: pointer;
         }
         .vm-header-bar{
-            float:left;
+            padding-top:40px;
+            float:none;
             font-size:30px;
             cursor:pointer;
         }
@@ -434,9 +445,10 @@
             cursor:pointer;
         }
         .vm-header-cart{
-            float:right;
+            float:none;
             font-size:30px;
             cursor:pointer;
+            padding-top:40px;
         }
         .cart__ID{
             position: relative;
@@ -452,8 +464,11 @@
             transform: translate(-50%, -50%);
         }
         .bars__ID{
-            padding: 40px 0 0 82px;
+            /*padding: 40px 0 0 82px;*/
             cursor: pointer;
+            display: block;
+            margin-left: auto;
+            margin-right: auto; 
         }
         #logo__ID {
             display: block;
@@ -463,7 +478,6 @@
         } 
         #cart_img__ID{
             padding-top:35px;
-            padding-right: 60px;
         }       
 
         @media screen and (max-height: 450px) {
@@ -472,10 +486,10 @@
             .sidenav {padding-top: 15px;}
             .sidenav a {font-size: 18px;}
             .vm-header-bar{
-                margin:5px 0 0 20px;
+                /*margin:5px 0 0 20px;*/
             }
             .vm-header-home{
-                margin:5px 20px 0 0;
+                /*margin:5px 20px 0 0;*/
             }
         }
     </style>

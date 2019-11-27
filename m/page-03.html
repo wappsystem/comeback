@@ -1,62 +1,71 @@
 <div id=D__ID>
     <div id=page__ID>
         <div id="slideshow">
-            <ul class="slides">
-                <li><img src="m/images/slider1.png" width="433" height="433" alt="Image 1" /></li>
-                <li><img src="m/images/slider2.png" width="433" height="433" alt="Image 2" /></li>
-                <li><img src="m/images/slider3.png" width="433" height="433" alt="Image 3" /></li>
-                <li><img src="m/images/slider4.png" width="433" height="433" alt="Image 4" /></li>
-                <li><img src="m/images/slider5.png" width="433" height="433" alt="Image 4" /></li>
+            <ul class="slides" id="slides__ID">
+                <li><img src="m/images/slider1.png"  alt="Image 1" /></li>
+                <li><img src="m/images/slider2.png"  alt="Image 2" /></li>
+                <li><img src="m/images/slider3.png"  alt="Image 3" /></li>
+                <li><img src="m/images/slider4.png"  alt="Image 4" /></li>
+                <li><img src="m/images/slider5.png"  alt="Image 4" /></li>
             </ul>
-            <img class="arrow previous" widht=150px; height=150px;></img>
-            <img class="arrow next" widht=150px; height=150px;></img>
+            <div id=next_prev__ID>
+                <img class="arrow previous" widht=150px; height=150px;></img>
+                <img class="arrow next" widht=150px; height=150px;></img>
+            </div>
+        </div>
+        <div id=circles__ID>
+            <i class="circle__ID i1__ID fas fa-circle"></i>
+            <i class="circle__ID i2__ID fas fa-circle"></i>
+            <i class="circle__ID i3__ID fas fa-circle"></i>
+            <i class="circle__ID i4__ID fas fa-circle"></i>
+            <i class="circle__ID i5__ID fas fa-circle"></i>
         </div>
     </div>
     <script>
         function F__ID() {
+            var slides;
             $('#D__ID').on('load', function () {
-                var slides = $('#slideshow li'),
+                slides = $('#slideshow li'),
                     current = 0,
                     slideshow = { width: 0, height: 0 };
-                    $('.previous').attr('src','m/images/slider5.png');
-                    $('.next').attr('src','m/images/slider2.png');
-
+                $('.i1__ID').attr('style', 'font-weight:900');
+                $('.previous').attr('src', 'm/images/slider5.png');
+                $('.next').attr('src', 'm/images/slider2.png');
                 setTimeout(function () {
-                    $('#slideshow img').each(function () {
+                    $('#slides__ID img').each(function () {
                         if (!slideshow.width) {
                             // Saving the dimensions of the first image:
                             slideshow.width = this.width;
                             slideshow.height = this.height;
                         }
                         // Rendering the modified versions of the images:
-                        console.log(1)
+                        console.log(slideshow.width)
                         createCanvasOverlay(this);
                     });
-                    $('#slideshow .arrow').click(function () {
-                        var li = slides.eq(current),
-                            canvas = li.find('canvas'),
-                            nextIndex = 0;
-                        // Depending on whether this is the next or previous
-                        // arrow, calculate the index of the next slide accordingly.
-                        if ($(this).hasClass('next')) {
-                            nextIndex = current >= slides.length - 1 ? 0 : current + 1;
-                        }
-                        else {
-                            nextIndex = current <= 0 ? slides.length - 1 : current - 1;
-                        }
-                        var next = slides.eq(nextIndex);
-                        var indexArrowL=nextIndex-1;
-                        var indexArrowR=nextIndex+1;
-                        console.log(nextIndex)
-                        if(indexArrowL==-1){indexArrowL=4;}
-                        if(indexArrowR==5){indexArrowR=0}
-                        $('.previous').attr('src',"m/images/slider"+(indexArrowL+1)+".png");
-                        $('.next').attr('src',"m/images/slider"+(indexArrowR+1)+".png");
-                        // This browser supports canvas, fade it into view:
+                }, 100)
+                $('#circles__ID .circle__ID').click(function () {
+                    $('.i1__ID').attr('style', 'font-weight:100');
+                    $('.i2__ID').attr('style', 'font-weight:100');
+                    $('.i3__ID').attr('style', 'font-weight:100');
+                    $('.i4__ID').attr('style', 'font-weight:100');
+                    $('.i5__ID').attr('style', 'font-weight:100');
+                    var li = slides.eq(current),
+                        canvas = li.find('canvas'),
+                        nextIndex = 0;
+                    var indexArrowL, indexArrowR, curslide;
+                    if ($(this).hasClass('i1__ID')) { next = slides.eq(0); indexArrowL = 4; indexArrowR = 1; curslide = 0; $('.i1__ID').attr('style', 'font-weight:900') }
+                    if ($(this).hasClass('i2__ID')) { next = slides.eq(1); indexArrowL = 0; indexArrowR = 2; curslide = 1; $('.i2__ID').attr('style', 'font-weight:900') }
+                    if ($(this).hasClass('i3__ID')) { next = slides.eq(2); indexArrowL = 1; indexArrowR = 3; curslide = 2; $('.i3__ID').attr('style', 'font-weight:900') }
+                    if ($(this).hasClass('i4__ID')) { next = slides.eq(3); indexArrowL = 2; indexArrowR = 4; curslide = 3; $('.i4__ID').attr('style', 'font-weight:900') }
+                    if ($(this).hasClass('i5__ID')) { next = slides.eq(4); indexArrowL = 3; indexArrowR = 0; curslide = 4; $('.i5__ID').attr('style', 'font-weight:900') }
+                    $('.previous').attr('src', "m/images/slider" + (indexArrowL + 1) + ".png");
+                    $('.next').attr('src', "m/images/slider" + (indexArrowR + 1) + ".png");
+                    // This browser supports canvas, fade it into view:
+                    if (current != curslide) {
                         canvas.fadeIn(function () {
                             // Show the next slide below the current one:
                             next.show();
-                            current = nextIndex;
+                            current = curslide;
                             // Fade the current slide out of view:
                             li.fadeOut(function () {
                                 li.removeClass('slideActive');
@@ -64,14 +73,61 @@
                                 next.addClass('slideActive');
                             });
                         });
+                    }
+                });
+
+                $('#slideshow .arrow').click(function () {
+                    $('.i1__ID').attr('style', 'font-weight:100');
+                    $('.i2__ID').attr('style', 'font-weight:100');
+                    $('.i3__ID').attr('style', 'font-weight:100');
+                    $('.i4__ID').attr('style', 'font-weight:100');
+                    $('.i5__ID').attr('style', 'font-weight:100');
+                    var li = slides.eq(current),
+                        canvas = li.find('canvas'),
+                        nextIndex = 0;
+                    // Depending on whether this is the next or previous
+                    // arrow, calculate the index of the next slide accordingly.
+                    if ($(this).hasClass('next')) {
+                        nextIndex = current >= slides.length - 1 ? 0 : current + 1;
+                    }
+                    else {
+                        nextIndex = current <= 0 ? slides.length - 1 : current - 1;
+                    }
+                    var next = slides.eq(nextIndex);
+                    var indexArrowL = nextIndex - 1;
+                    var indexArrowR = nextIndex + 1;
+                    //console.log(nextIndex)
+                    if (nextIndex == 0) $('.i1__ID').attr('style', 'font-weight:900')
+                    if (nextIndex == 1) $('.i2__ID').attr('style', 'font-weight:900')
+                    if (nextIndex == 2) $('.i3__ID').attr('style', 'font-weight:900')
+                    if (nextIndex == 3) $('.i4__ID').attr('style', 'font-weight:900')
+                    if (nextIndex == 4) $('.i5__ID').attr('style', 'font-weight:900')
+                    if (indexArrowL == -1) { indexArrowL = 4; }
+                    if (indexArrowR == 5) { indexArrowR = 0 }
+                    $('.previous').attr('src', "m/images/slider" + (indexArrowL + 1) + ".png");
+                    $('.next').attr('src', "m/images/slider" + (indexArrowR + 1) + ".png");
+                    // This browser supports canvas, fade it into view:
+                    canvas.fadeIn(function () {
+                        // Show the next slide below the current one:
+                        next.show();
+                        current = nextIndex;
+                        // Fade the current slide out of view:
+                        li.fadeOut(function () {
+                            li.removeClass('slideActive');
+                            canvas.hide();
+                            next.addClass('slideActive');
+                        });
                     });
-                }, 100);
+                });
                 function createCanvasOverlay(image) {
+                    console.log("B")
                     var canvas = document.createElement('canvas'),
                         canvasContext = canvas.getContext("2d");
                     // Make it the same size as the image
                     canvas.width = slideshow.width;
+                    console.log(canvas.width)
                     canvas.height = slideshow.height;
+                    console.log(canvas.height)
                     // Drawing the default version of the image on the canvas:
                     canvasContext.drawImage(image, 0, 0);
                     // Taking the image data and storing it in the imageData array:
@@ -89,14 +145,17 @@
                         data[++i] = ((data[i] < 128) ? (2 * data[i] * data[i] / 255) :
                             (255 - 2 * (255 - data[i]) * (255 - data[i]) / 255));
                         // After the RGB channels comes the alpha value, which we leave the same.
+                        //data[++i]=0;
                         ++i;
                     }
                     // Putting the modified imageData back on the canvas.
+                    console.log(imageData.width)
                     canvasContext.putImageData(imageData, 0, 0, 0, 0, imageData.width, imageData.height);
                     // Inserting the canvas in the DOM, before the image:
+                    //canvasContext.globalAlpha=0.2;
                     image.parentNode.insertBefore(canvas, image);
-                }
-            });
+                }  
+            });   
         }     
     </script>
     <style>
@@ -104,6 +163,13 @@
             height: 100%;
             animation: vm_module_fadein 1.0s;
             background-color: #fff;
+        }
+        li img{
+            height:433px;
+            width:433px;
+        }
+        .circle__ID {
+            font-weight: 100;
         }
 
         /*        #page__ID{
@@ -114,6 +180,11 @@
             padding-top:50px;'
         }
         */
+        #circles__ID {
+            text-align: center;
+            cursor: pointer;
+        }
+
         #slideshow {
             background-color: #F5F5F5;
             border: 1px solid #FFFFFF;
@@ -185,6 +256,36 @@
 
         #slideshow .next:hover {
             background-position: right bottom;
+        }
+	    @media screen and (max-width: 500px) {
+	        #next_prev__ID{
+	            display:none;
+	        }
+            #slideshow {
+                background-color: #F5F5F5;
+                border: 1px solid #FFFFFF;
+                height: 433px;
+                position: relative;
+                width: 433px;
+                margin: 150px auto 0;
+                -moz-box-shadow: 0 0 22px #111;
+                -webkit-box-shadow: 0 0 22px #111;
+                box-shadow: 0 0 22px #111;
+            }
+            #slideshow ul {
+                height: 300px;
+                left: 12px;
+                list-style: none outside none;
+                overflow: hidden;
+                position: absolute;
+                top: 10px;
+                width: 300px;
+            }
+            li img{
+                height:300px;
+                width:300px;
+            }
+
         }
     </style>
 </div>

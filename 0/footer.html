@@ -1,24 +1,154 @@
 <div id=D__ID>
-    <div id=footer__ID>
-        <hr>
-        <div class=row>
-            <div class="col-6 d-flex justify-content-left" style='padding-left:3rem;'>
-                    <p style='font-size: 24px;'>Connect with us.</p>
+    <div id=footer__ID> 
+        <form id=F__ID>
+            <hr>
+            <div class="row">
+                <div class="col-lg-5 col-sm-10 col-lg-height no-padding">
+                    <div class="split-box-content";>
+                        <div class='mains__ID' style= 'text-align:left;margin-left:5%'>
+                            <p class='fontem' >CONNECT WITH US.</p>
+                            <input class="form-control form-control-lg" style='background-color: transparent;border-bottom: 1px solid black;' type="text" placeholder="Email Address" id=email_address__ID name=_email_address >
+                            <div class='row pt-2'>
+                                <div  class="col-lg-3">
+                                    <button id=submit__ID type="submit" class="btn" >SUBMIT <img src="m/images/right-arrow-black.png"  ></img></button>
+                                </div>
+                                <div   class="col-lg-9">
+                                    <p class=fontems style='padding-top:7px'>By signing up, you agree to receive emails from Comeback and agree to our terms of use and privacy policy.</p>
+                                    <p class=fontfot >&nbsp;</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--                <div class='col-lg-1 col-sm-2'>
+                    <div class='mains__ID' style= 'text-align:left;margin-left:5%'>
+                        <p class=fontem >&nbsp;</p>
+                        <button id=submit__ID type="submit" class="btn" ><img src="m/images/right-next.png"  ></img></button>
+                    </div>
+                </div>-->
+                <div class="col-lg-3 col-sm-12 col-lg-height no-padding">
+                    <div class=vlf></div>
+                    <div class="split-box-content";>
+                        <div class='mains__ID' style= 'text-align:left;margin-left:5%'>
+                            <a class=fontfot href='https://www.facebook.com/comebackyourway/' target=_blank >THE CAMPAIGN</a><br>
+                            <a class=fontfot href='https://www.instagram.com/comebackyourway/?hl=en' target=_blank >THE CREATORS</a><br>
+                            <a class=fontfot href='https://www.instagram.com/comebackyourway/?hl=en' target=_blank >THE COMMUNITY</a><br>
+                            <a class=fontfot id=contact__ID>CONTACT</a><br>
+                            <p class=fontfot >&nbsp;</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-12 col-lg-height no-padding">
+                    <div class=vlf></div>
+                    <div class="split-box-content";>
+                        <div class='mains__ID' style= 'text-align:left;margin-left:5%'>
+                            <a class=fontfot href='https://www.instagram.com/comebackyourway/?hl=en' target=_blank >INSTAGRAM</a><br>
+                            <a class=fontfot href='https://www.facebook.com/comebackyourway/' target=_blank  >FACEBOOK</a><br>
+                            <p class=fontfot >&nbsp;</p>
+                            <a ><img class='img-fluid' src="m/images/logo-black-small.png" ></img></a>
+                            <p class=fontems >ALL RIGHTS RESERVED</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class=col-3>
-            </div>
-            <div class=col-3>
-            </div>
-        </div>
+        </form>
     </div>
+
+     <!-- The Modal -->
+  <div class="modal" id="myModal__ID">
+    <div class="modal-dialog">
+      <div class="modal-content">      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title" id=modal_title__ID></h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body" id=modal_body__ID>
+         
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <button type="button" id=alert__ID class="btn btn-primary" data-toggle="modal" data-target="#myModal__ID" style='display:none'>
+    Open modal
+  </button>
     <script>
+      	function F__ID(){
+            //-------------------------------------
+            VmInclude:__COMPONENT__/f/form.01.js
+            //-------------------------------------
+            $('#contact__ID').on('click',function(){$('#modal_title__ID').html('Follow us');$('#modal_body__ID').html('During our campain you can follow us for updates on Facebook'); $('#alert__ID').click();})
+			m.before_submit = function (data, index) {
+                console.log(data)
+                var count=0;
+                if($('#email_address__ID').val()=="" || $('#email_address__ID').val()==undefined ) {$('#modal_title__ID').html('Email Missing');$('#modal_body__ID').html('Please fill in an email address before submitting.'); $('#alert__ID').click(); return false;}
+                var tb = 'comeback-email-address'
+                //var qry = {'Data.email_address':$('#email_address__ID').val()};
+                jQuery.ajaxSetup({async:false});
+                $vm.request({ cmd: "find-u", table: tb, options: {},name:'email_address',value:$('#email_address__ID').val() }, function (res) {
+                // $vm.request({ cmd: "find_u", table: tb, query: qry, options: {} }, function (res) {
+                    count=res.result.length;
+                })
+                jQuery.ajaxSetup({async:true});
+                if (count > 0) {console.log('B'+count);$('#modal_title__ID').html('Duplicated Email');$('#modal_body__ID').html('Your email is already registered.'); $('#alert__ID').click();;return false;}
+                console.log('A'+count);
+                return true;
+    		}
+}
         //------------------------------------
         $vm.footer_ready=1;
         //------------------------------------
+
     </script>
+
     <style>
+   		#D__ID .vlf {
+			border-left: 1px solid rgb( 0,0,0,0.3);
+			height: 150px;
+			position: absolute;
+            left:0;
+			top: 0;
+		}
+
         #D__ID{
             overflow: hidden;
+        }
+        #D__ID #myModal__ID{
+            font-family: "Montserrat";
+            font-weight: normal;
+        }
+        #D__ID #myModal__ID .modal-content{
+            background-color: rgb(233, 230, 222);
+        }
+        #D__ID .fontem{
+            font-size: 17px;
+            font-weight:normal;
+            color:black;
+        }
+        #D__ID .fontems{
+            font-size: 12px;
+            font-weight:normal;
+            color:black;
+        }
+        #D__ID .fontfot{
+            font-size: 15px;
+            font-weight:normal;
+            color:black;
+            margin:0;
+            letter-spacing: 0.2rem;
+        }
+        #D__ID #contact__ID{
+            cursor: pointer;
+        }
+        #D__ID #submit__ID{
+            cursor:pointer;
         }
         hr{
             margin-top: 1rem;
@@ -35,7 +165,7 @@
         }
         #footer__ID{
             font-family: "Montserrat";
-            height:90px;
+            /*height:90px;*/
             overflow: hidden;
             color: #000;
             padding: 12px;
@@ -57,8 +187,21 @@
         #footer__ID .icon-gplus{
             color:#dd4b39;
         }
+        #footer__ID .questiongroup-footer{
+            text-align:left;
+        }
+        #footer__ID .form-control-footer{
+            display: block;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;            
+        }
         @media screen and (max-width: 1200px){
-            #footer__ID{ height:110px; }
+            #footer__ID{ height:auto; }
         }
     </style>
 </div>

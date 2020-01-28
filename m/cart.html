@@ -1,0 +1,455 @@
+<div id=D__ID>
+	<div id=cart__ID class=home_page_2>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="split-box-content";>
+						<div class='mains__ID'>
+							<p style='font-size: 30px;margin:5%;text-align:left'>Cart</p>
+						</div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-lg-6">
+    							<p style='font-size: 24px;margin:5%;text-align:left'>Comeback Complement<sup>&trade;</sup> 215g USD75.00</p>
+	    					</div>
+                            <!-- Change the `data-field` of buttons and `name` of input field's for multiple plus minus buttons-->
+                            <div class="col-lg-3">
+                                <div class="input-group plus-minus-input">
+                                    <div class="input-group-button">
+                                    <p id=subtract_compliment__ID style='cursor:pointer;margin-bottom:0;margin-top: 0;'>
+                                        <i class="fa fa-minus" aria-hidden="true"></i>
+                                    </p>
+                                    </div>
+                                    <input class="input-group-field" style='width:4rem' type="number" min=0 name="compliment_quantity__ID" value="0">
+                                    <div class="input-group-button">
+                                        <p id=add_compliment__ID  style='cursor:pointer;margin-bottom:0;margin-top: 0;'>
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                        </p>
+                                    </div>
+                                </div>                                    
+                            </div>
+                            <div class="col-lg-3">
+    							<p id=total_comliment__ID style='font-size: 24px;margin:5%;text-align:left;padding-top:1.5rem'>USD 0.00</p>
+	    					</div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-lg-6">
+    							<p style='font-size: 24px;margin:5%;text-align:left'>Your Comeback Book USD50.00</p>
+	    					</div>
+                            <!-- Change the `data-field` of buttons and `name` of input field's for multiple plus minus buttons-->
+                            <div class="col-lg-3">
+                                <div class="input-group plus-minus-input">
+                                    <div class="input-group-button">
+                                    <p id=subtract_book__ID style='cursor:pointer;margin-bottom:0;margin-top: 0;'>
+                                        <i class="fa fa-minus" aria-hidden="true"></i>
+                                    </p>
+                                    </div>
+                                    <input class="input-group-field" style='width:4rem' type="number" min=0 name="book_quantity__ID" value="0">
+                                    <div class="input-group-button">
+                                        <p id=add_book__ID  style='cursor:pointer;margin-bottom:0;margin-top: 0;'>
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                        </p>
+                                    </div>
+                                </div>                                    
+                            </div>
+                            <div class="col-lg-3">
+    							<p id=total_book__ID style='font-size: 24px;margin:5%;text-align:left;padding-top:1.5rem'>USD 0.00</p>
+	    					</div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-lg-6">
+	    					</div>
+                            <!-- Change the `data-field` of buttons and `name` of input field's for multiple plus minus buttons-->
+                            <div class="col-lg-3">
+    							<p style='font-size: 24px;margin:5%;text-align:left;padding-top:1.5rem'>Total</p>
+	    					</div>
+                            <div class="col-lg-3">
+    							<p id=total__ID style='font-size: 24px;margin:5%;text-align:left;padding-top:1.5rem'>USD 0.00</p>
+	    					</div>
+                        </div>
+                        <hr>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+/*		console.log(document.documentElement.clientHeight)
+		console.log(document.documentElement.clientWidth)
+		var pad=document.documentElement.clientHeight/9;
+		var toppad=2;
+		if(document.documentElement.clientWidth<576){
+			pad=document.documentElement.clientHeight/20;
+			toppad=5;
+		}
+		var padst2=(toppad*pad-100).toString()+'px';
+		var padst=(pad).toString()+'px';
+		document.getElementById("topdiv__ID").style.paddingTop=padst2;
+		document.getElementById("logodiv__ID").style.paddingTop=padst;
+		document.getElementById("bottomdiv__ID").style.paddingTop=padst;
+		$('#scroll_down__ID').on('click',function(e){
+			e.preventDefault();
+    		$('html, body').animate({ scrollTop: $('#cart__ID').offset().top-100}, 800, 'linear');
+        })
+*/        
+		$('#subtract_compliment__ID').on('click',function(e){
+            var comp_items=parseInt($('input[name="compliment_quantity__ID"]').val());
+            if(comp_items >= 1) comp_items--;
+            else comp_items=0;
+            $('input[name="compliment_quantity__ID"]').val(comp_items.toString())
+            $('#total_comliment__ID').html('USD '+(comp_items*75).toString()+'.00')
+            total_sum();
+		})
+		$('#add_compliment__ID').on('click',function(e){
+            var comp_items=parseInt($('input[name="compliment_quantity__ID"]').val());
+            comp_items++;
+            $('input[name="compliment_quantity__ID"]').val(comp_items.toString())
+            $('#total_comliment__ID').html('USD '+(comp_items*75).toString()+'.00')
+            total_sum();
+		})
+		$('#subtract_book__ID').on('click',function(e){
+            var comp_items=parseInt($('input[name="book_quantity__ID"]').val());
+            if(comp_items >= 1) comp_items--;
+            else comp_items=0;
+            $('input[name="book_quantity__ID"]').val(comp_items.toString())
+            $('#total_book__ID').html('USD '+(comp_items*50).toString()+'.00')
+            total_sum();
+		})
+		$('#add_book__ID').on('click',function(e){
+            var comp_items=parseInt($('input[name="book_quantity__ID"]').val());
+            comp_items++;
+            $('input[name="book_quantity__ID"]').val(comp_items.toString())
+            $('#total_book__ID').html('USD '+(comp_items*50).toString()+'.00')
+            total_sum();
+        })
+        var total_sum=function(){
+            var total_items=parseInt($('input[name="compliment_quantity__ID"]').val())*75;
+            total_items+=parseInt($('input[name="book_quantity__ID"]').val())*50;
+            $('#total__ID').html('USD '+(total_items).toString()+'.00');
+            total_count();
+
+        }
+        var total_count=function(){
+            var total_items=parseInt($('input[name="compliment_quantity__ID"]').val());
+            total_items+=parseInt($('input[name="book_quantity__ID"]').val());
+            $('#cart_size').html(total_items.toString());
+
+        }
+   		
+	</script>
+	<style>
+#next_insta__ID{
+	cursor:pointer;
+}
+
+#D__ID .plus-minus-input {
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+          padding-top: 1.5rem;
+}
+
+#D__ID .plus-minus-input .input-group-field {
+  text-align: center;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  padding: 1rem;
+}
+
+#D__ID .plus-minus-input .input-group-field::-webkit-inner-spin-button,
+#D__ID .plus-minus-input .input-group-field ::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+          appearance: none;
+}
+
+#D__ID .plus-minus-input .input-group-button .circle {
+  border-radius: 50%;
+  padding: 0.25em 0.8em;
+}
+#D__ID input {
+    padding: 4px;
+    font-size: 24px;
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    border: 2px solid rgb(233, 230, 222); /* Here */
+    background: rgb(233, 230, 222);
+}
+#D__ID .vlf {
+    border-left: 1px solid rgb( 0,0,0,0.3);
+    height: 150px;
+    position: absolute;
+    left:0;
+    top: 0;
+}
+
+.img__ID{
+	width: 350px;
+	height:350px;
+}
+.dot {
+  height: 10px;
+  width: 10px;
+  background-color: rgb(0,0,0,0);
+  border-radius: 50%;
+  display: inline-block;
+  border: 1px solid black;
+}
+
+.containersl {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+		#D__ID{
+			height:100%;
+	        overflow:auto;
+			align-items: center;
+			font-family: "Montserrat";
+
+			/*animation: vm_module_fadein 1.0s, D__ID 3s;*/
+		}
+		#page__ID{
+			/*margin-top:100px;*/
+			background: rgb(0, 0, 0);
+		}
+		#cart__ID{
+			height:100%;
+			display: flex;
+			align-items: center;
+			background: rgb(233, 230, 222);
+			/*border-bottom: 1px solid;*/
+		}
+		.vl {
+			border-left: 1px solid white;
+			height: 150px;
+			position: absolute;
+			left: 50%;
+			top: 0;
+		}
+		.vl2 {
+			margin-top: 1rem;
+			margin-bottom: 1rem;
+			border: 0;
+			border-top: 2px solid rgba(0, 0, 0, 0.3);
+			margin-left: 0;
+			margin-right: 0;
+		}
+		.panel__ID{
+			color:#fff;
+			background: rgb(0, 0, 0,0.0);
+			border-radius: 25px;
+			padding:10px 30px;
+		}
+		.mains__ID{
+			font-family: "Montserrat";
+            font-weight: lighter;
+		}
+		#page__ID h2{
+			text-shadow: 2px 2px 2px #fff;
+		}
+		@keyframes D__ID {
+			from {padding-top: 300px;}
+			to {padding-top: 0px;}
+		}
+	    @media screen and (max-width: 992px) {
+	        #D__ID{
+	            animation: vm_module_fadein 1.0s;
+	        }
+	    }
+		#top__ID{
+			cursor:pointer;
+		}
+		#learn_more__ID{
+			cursor:pointer;
+		}
+		#buy_now__ID{
+			cursor:pointer;
+		}
+        #buy__ID,#buy2__ID,#buy3__ID{
+            display: inline-block;
+            font-weight: 400;
+            text-align: center;
+            vertical-align: middle;
+            background-color: transparent;
+            border: 1px solid;
+            padding: 1.5rem 2rem;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            font-weight: bold;
+            letter-spacing: 0.2rem;
+        }
+
+	#D__ID .bg-image {
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+#D__ID .split-box-content {
+    position: relative;
+    padding: 10% 10%;
+    z-index: 9;
+}
+#D__ID .split-box-content-no-bottom {
+    position: relative;
+    padding: 10% 20% 3% 20%;
+    z-index: 9;
+}
+
+@media (min-width: 992px){
+	#D__ID .fontnl{
+		font-size: 17px;
+		font-weight:700;
+		color:white;
+		letter-spacing: 0.2rem;
+	}
+    #D__ID .col-lg-5 {
+        width: 41.66666667%;
+    }
+    #D__ID .col-lg-middle {
+        vertical-align: middle;
+    }
+    #D__ID .col-lg-height {
+        display: table-cell;
+        float: none;
+        height: 100%;
+    }
+    #D__ID .col-lg-5{
+        width: 41.6666667%;
+    }
+    #D__ID .col-lg-7{
+        width: 58.33333333%;
+    }
+    #D__ID .col-lg-8{
+        width: 66.66667%;
+    }
+    #D__ID .col-lg-4{
+        width: 33.3333%;
+    }
+    #D__ID .col-lg-6{
+        width: 50%;
+    }
+    #D__ID .col-lg-9{
+        width: 75%;
+    }
+    #D__ID .col-lg-3{
+        width: 25%;
+    }
+    #D__ID .row-lg-height {
+        display: table;
+        table-layout: fixed;
+        height: 100%;
+        width: 100%;
+    }    
+}
+@media (min-width: 768px){
+	#insta_text__ID{
+		font-size: 24px;
+		word-wrap: break-word;
+	}
+	#D__ID .fontnl{
+		font-size: 17px;
+		font-weight:700;
+		color:white;
+		letter-spacing: 0.2rem;
+		margin-bottom: 0;
+	}
+	#D__ID .fontxl{
+		font-size: 32px;
+		font-weight:700;
+		color:white;
+		margin-bottom: 0;
+		letter-spacing: 0.2rem;
+	}
+	#D__ID .fontxs{
+		font-size: 17px;
+		font-weight:700;
+		color:white;
+		margin-bottom: 0;
+		letter-spacing: 0.2rem;
+	}
+}
+@media (max-width: 785px){
+	#insta_text__ID{
+		font-size: 20px;
+		word-wrap: break-word;
+	}
+	#D__ID .fontnl{
+		font-size: 9px;
+		font-weight:700;
+		color:white;
+		letter-spacing: 0.2rem;
+		margin-bottom: 0;
+
+	}
+	#D__ID .fontxl{
+		font-size: 17px;
+		font-weight:700;
+		color:white;
+		margin-bottom: 0;
+		letter-spacing: 0.2rem;
+	}
+	#D__ID .fontxs{
+		font-size: 9px;
+		font-weight:700;
+		color:white;
+		letter-spacing: 0.2rem;
+		margin-bottom: 0;
+	}
+}
+@media (max-width: 576px){
+	#D__ID .split-box-content {
+		position: relative;
+		padding: 10% 0;
+		z-index: 9;
+	}
+	#D__ID .split-box-content-no-bottom {
+		position: relative;
+		padding: 10% 00 3% 0;
+		z-index: 9;
+	}
+}
+#D__ID .row-height, #D__ID .row-lg-height, #D__ID .row-md-height, #D__ID .row-sm-height {
+    overflow: hidden;
+    margin-left: -1px;
+}
+#D__ID .no-padding{
+    padding:0!important;
+}
+#D__ID .padding-height-80 {
+    padding-bottom: 89.5% !important;
+}
+#D__ID .tt-heading {
+    position: relative;
+    z-index: 1;
+}
+#D__ID .tt-heading-inner {
+    position: relative;
+    z-index: 2;
+}
+#D__ID .tt-heading-title {
+    max-width: 800px;
+    margin: 0;
+    font-size: 32px;
+}
+#D__ID .tt-heading-subtitle {
+    max-width: 800px;
+    margin-top: 5px;
+    font-size: 16px;
+    color: #999;
+}
+#D__ID .margin-top-30 {
+    margin-top: 30px !important;
+}
+#D__ID .margin-top-20 {
+    margin-top: 20px !important;
+}
+	</style>
+	<script>
+		function F__ID(){
+			$vm['home_ready']=1;
+		}
+	</script>
+</div>

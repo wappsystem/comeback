@@ -7,7 +7,7 @@
                 <a class=vm-header-home href="?home" ><img  id=logo__ID src="m/images/logo-black.png" ></img></a>
             </div>
             <div class="col-2" id=cart_img__ID><div class="clearfix visible-xs"></div>
-                    <a class=vm-header-cart onclick="$vm.openCart()" ><div class="cart__ID"><img class=cart_i__ID src="m/images/cart.png" ></img><div id="cart_size__ID" class="centered">0</div></div></a>
+                    <a class=vm-header-cart onclick="$vm.openCart()" ><div class="cart__ID"><img class=cart_i__ID src="m/images/cart.png" ></img><div id="cart_size" class="centered">0</div></div></a>
             </div>
 <!--
         <div class=vm-header>
@@ -103,6 +103,11 @@
             $vm.closeNav();
         })
         //------------------------------------
+        $('#view_cart__ID').on('click',function(){
+            $vm.closeCart();
+            $vm.load_module('cart','',{});
+        })
+
         /*
         $('.vm-menu a').on('click',function(e){
             var sec=$(this).attr('section');

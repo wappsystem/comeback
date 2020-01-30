@@ -34,9 +34,11 @@
                 <hr>
                 <p style='font-size: 24px;'>Cart</p>
                 <p style='font-size: 16px;'>Comeback Complement, 215G</p>
-                <p style='font-size: 16px;'>1 x $75.00</p>
+                <p id=compliment_count style='font-size: 16px;'></p>
+                <p style='font-size: 16px;'>Comeback Book</p>
+                <p id=book_count style='font-size: 16px;'></p>
                 <hr>
-                <p class="letterspace" style='font-size: 15px;font-weight:bold;'>SUBTOTAL: $75.00</p>
+                <p id=subtotal_compliment_book class="letterspace" style='font-size: 15px;font-weight:bold;'></p>
                 <p>&nbsp;</p>
                 <p><button type="button" id=view_cart__ID class="btn-outline-light text-light">VIEW &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="m/images/right-arrow.png"  ></img></button></p>
             </div>
@@ -84,6 +86,15 @@
             else x.className="";
             */
         }
+        //------------------------------------
+        var compliment_val=parseInt(localStorage.getItem("compliment"));
+        var book_val=parseInt(localStorage.getItem("books"));
+        if(isNaN(compliment_val)) compliment_val=0;
+        if(isNaN(book_val)) book_val=0;
+        $('#cart_size').html((compliment_val+book_val).toString());
+        $('#compliment_count').html(compliment_val.toString()+" x USD 75.00");
+        $('#book_count').html(book_val.toString()+" x USD 50.00");
+        $('#subtotal_compliment_book').html("SUBTOTAL: USD "+(compliment_val*75+book_val*50).toString()+".00")
         //------------------------------------
         $('.vm-menu a').on('click',function(e){
             e.preventDefault();

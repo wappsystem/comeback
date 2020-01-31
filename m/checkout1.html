@@ -1,141 +1,102 @@
 <div id=D__ID>
-	<div id=cart__ID class=home_page_2>
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="split-box-content";>
-						<div class='mains__ID'>
-						</div>
-                        <hr>
-                        <div class="pr-4">
-                            <button type="button" id=next2__ID class="btn-outline-light text-dark float-right">Next &nbsp;&nbsp;&nbsp;<img src="m/images/right-arrow-black.png"  ></img></button>
-                        </div>
+    <!--third html start -->
+    <div class="container mt-95 mb-3 checkout1">
+        <div class="row">
+            <div class="col-12 col-lg-9 col-md-11 col-sm-12 mx-auto formbox">
+                <div class="row">
+                    <div class="col-12">
+                        <form id=F__ID>
+                            <br>
+                            <h3>Billing information</h3>
+                            <div style='margin-left:auto;margin-right:auto;'>
+                                <div class="form-group">
+                                    <div class="questiongroup">
+                                        <fieldset class="subquestions">
+                                            <label style="width:100%"><span class=""></span>
+                                                <input class="form-control form-control-lg" style='background-color: transparent;border-bottom: 1px solid black;' type="text" name="name" required placeholder="Name">
+                                            </label><br>
+                                            <label style="width:100%"><span class=""></span>
+                                                <input class="form-control form-control-lg" style='background-color: transparent;border-bottom: 1px solid black;' type="text" name="address_1" required placeholder="Address 1">
+                                            </label><br>
+                                            <label style="width:100%"><span class=""></span>
+                                                <input class="form-control form-control-lg" style='background-color: transparent;border-bottom: 1px solid black;' type="text" name="address_2" placeholder="Address 2">
+                                            </label><br>
+                                            <label><span class=""></span>
+                                                <input class="form-control form-control-lg" style='background-color: transparent;border-bottom: 1px solid black;' type="text" name="city" required placeholder="City">
+                                            </label><br>
+                                            <label><span class=""></span>
+                                                <input class="form-control form-control-lg" style='background-color: transparent;border-bottom: 1px solid black;' type="text" name="state" required placeholder="State">
+                                            </label><br>
+                                            <label><span class=""></span>
+                                                <input class="form-control form-control-lg" style='background-color: transparent;border-bottom: 1px solid black;' type="text" name="zip" required placeholder="Zip Code">
+                                            </label><br>
+                                            <label><span class=""></span>
+                                                <input class="form-control form-control-lg" style='background-color: transparent;border-bottom: 1px solid black;' name="phone" required placeholder="Phone" placeholder="Phone">
+                                            </label><br>
+                                            <label style="width:100%"><span class=""></span>
+                                                <input class="form-control form-control-lg" style='background-color: transparent;border-bottom: 1px solid black;' type="email" name="email" required placeholder="Email">
+                                            </label><br>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="questiongroup ">
+                                        <fieldset class="">
+                                            <label class="checkboxes">
+                                                <input type="checkbox" name="Delivery" checked>
+                                                <span class="check_checkmark"></span> Delivery address is same as billing
+                                            </label><br>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div style="text-align:right">
+                                    <button type="button" id=next2__ID class="btn-outline-light text-dark float-right">Next &nbsp;&nbsp;&nbsp;<img src="m/images/right-arrow-black.png"  ></img></button>
+                                </div>
+                                <div class="form-group">
+                                    <div class="questiongroup ">
+                                        <fieldset class="subquestions" style="display:none">
+                                            <label><span class="">Order Number</span>
+                                                <input class="form-control" type="text" name="order_number" >
+                                            </label><br>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<script>
-       function F__ID() {
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function F__ID() {
             //-------------------------------------
-            VmInclude: '__COMPONENT__/f/form.01.js'
+            VmInclude: __COMPONENT__/f/form.01.js
             //-------------------------------------
-            //var load2 = m.load;
+            m.default_load = m.load;
             m.load = function () {
-                if(isNaN(localStorage.getItem("compliment"))) {
-                    $('input[name="compliment_quantity__ID"]').val("0")
-                    $('#total_compliment__ID').html('USD 0.00')
-                }
-                else {
-                    $('input[name="compliment_quantity__ID"]').val(localStorage.getItem("compliment"));
-                    $('#total_compliment__ID').html('USD '+(parseInt(localStorage.getItem("compliment"))*75).toString()+'.00')
-                }
-                if(isNaN(localStorage.getItem("books"))) {
-                    $('input[name="book_quantity__ID"]').val("0")
-                    $('#total_book__ID').html('USD 0.00')
-                }
-                else {
-                    $('input[name="book_quantity__ID"]').val(localStorage.getItem("books"));
-                    $('#total_book__ID').html('USD '+(parseInt(localStorage.getItem("books"))*50).toString()+'.00')
-                }
-                total_sum();
+                m.default_load();
+                $('#D__ID').scrollTop(0);
+                $(window).scrollTop(0);
+                m.input.goback = 1;
             }
-
-/*		console.log(document.documentElement.clientHeight)
-		console.log(document.documentElement.clientWidth)
-		var pad=document.documentElement.clientHeight/9;
-		var toppad=2;
-		if(document.documentElement.clientWidth<576){
-			pad=document.documentElement.clientHeight/20;
-			toppad=5;
-		}
-		var padst2=(toppad*pad-100).toString()+'px';
-		var padst=(pad).toString()+'px';
-		document.getElementById("topdiv__ID").style.paddingTop=padst2;
-		document.getElementById("logodiv__ID").style.paddingTop=padst;
-		document.getElementById("bottomdiv__ID").style.paddingTop=padst;
-		$('#scroll_down__ID').on('click',function(e){
-			e.preventDefault();
-    		$('html, body').animate({ scrollTop: $('#cart__ID').offset().top-100}, 800, 'linear');
-        })
-*/        
-
-		$('#subtract_compliment__ID').on('click',function(e){
-            var comp_items=parseInt($('input[name="compliment_quantity__ID"]').val());
-            if(comp_items >= 1) comp_items--;
-            else comp_items=0;
-            $('input[name="compliment_quantity__ID"]').val(comp_items.toString())
-            $('#total_compliment__ID').html('USD '+(comp_items*75).toString()+'.00')
-            total_sum();
-		})
-		$('#add_compliment__ID').on('click',function(e){
-            var comp_items=parseInt($('input[name="compliment_quantity__ID"]').val());
-            comp_items++;
-            $('input[name="compliment_quantity__ID"]').val(comp_items.toString())
-            $('#total_compliment__ID').html('USD '+(comp_items*75).toString()+'.00')
-            total_sum();
-		})
-		$('#subtract_book__ID').on('click',function(e){
-            var comp_items=parseInt($('input[name="book_quantity__ID"]').val());
-            if(comp_items >= 1) comp_items--;
-            else comp_items=0;
-            $('input[name="book_quantity__ID"]').val(comp_items.toString())
-            $('#total_book__ID').html('USD '+(comp_items*50).toString()+'.00')
-            total_sum();
-		})
-		$('#add_book__ID').on('click',function(e){
-            var comp_items=parseInt($('input[name="book_quantity__ID"]').val());
-            comp_items++;
-            $('input[name="book_quantity__ID"]').val(comp_items.toString())
-            $('#total_book__ID').html('USD '+(comp_items*50).toString()+'.00')
-            total_sum();
-        })
-        var total_sum=function(){
-            var total_items=parseInt($('input[name="compliment_quantity__ID"]').val())*75;
-            total_items+=parseInt($('input[name="book_quantity__ID"]').val())*50;
-            $('#total__ID').html('USD '+(total_items).toString()+'.00');
-            $('#subtotal_compliment_book').html("SUBTOTAL: USD "+(total_items).toString()+".00")
-            total_count();
-
+            //--------------------------------------------------------
+            $('#D__ID').css('min-height', $vm.min_height);
+            //--------------------------------------------------------
+            $(this).scrollTop(0);
+            //-------------------------------------
+			var before_submit = m.before_submit;
+			m.before_submit = function (data, index) {
+                //var I1 = $('#F__ID input[name=sequence_no').val(); if (I1 != '' && I1 != '-') index.I1 = parseInt(I1);
+				return before_submit(data, index);
+			}
+            //-------------------------------------
+            m.after_insert = function (data, res) {
+            }
+			//-------------------------------------
         }
-        var total_count=function(){
-            var total_items=parseInt($('input[name="compliment_quantity__ID"]').val());
-            localStorage.setItem("compliment", total_items);
-            localStorage.setItem("books", parseInt($('input[name="book_quantity__ID"]').val()));
-            total_items+=parseInt($('input[name="book_quantity__ID"]').val());
-            $('#cart_size').html(total_items.toString());
-            $('#compliment_count').html($('input[name="compliment_quantity__ID"]').val()+" x USD 75.00");
-            $('#book_count').html($('input[name="book_quantity__ID"]').val()+" x USD 50.00");
-        }
-    }   		
     </script>
-<style>
-#next_insta__ID{
-	cursor:pointer;
-}
-
-#D__ID .plus-minus-input {
-        -webkit-align-items: center;
-          align-items: center;
-}
-
-#D__ID .plus-minus-input .input-group-field {
-  text-align: center;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  padding: 1rem;
-}
-
-#D__ID .plus-minus-input .input-group-field::-webkit-inner-spin-button,
-#D__ID .plus-minus-input .input-group-field ::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-          appearance: none;
-}
-
-#D__ID .plus-minus-input .input-group-button .circle {
-  border-radius: 50%;
-  padding: 0.25em 0.8em;
-}
+    <style>
 #next1__ID{
     display: inline-block;
     font-weight: 400;
@@ -151,7 +112,7 @@
 }
 #D__ID input {
     padding: 4px;
-    font-size: 24px;
+    font-size: 18px;
     -webkit-appearance: none; 
     -moz-appearance: none; 
     border: 2px solid rgb(233, 230, 222); /* Here */
@@ -183,11 +144,19 @@
     overflow-x: auto;
     white-space: nowrap;
 }
+.checkout1 {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background: rgb(233, 230, 222);
+    margin-top: 100px;
+}
 		#D__ID{
 			height:100%;
 	        overflow:auto;
 			align-items: center;
 			font-family: "Montserrat";
+            background: rgb(233, 230, 222);
 
 			/*animation: vm_module_fadein 1.0s, D__ID 3s;*/
 		}
@@ -427,5 +396,59 @@
 #D__ID .margin-top-20 {
     margin-top: 20px !important;
 }
-	</style>
+@media (min-width: 699px) {
+    #D__ID  fieldset.subquestions br { display: none; }
+    #D__ID label {
+        margin-left:0;
+    }
+}
+/* CHECK BOX */
+#D__ID .checkboxes {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    padding-left: 30px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#D__ID .checkboxes input {
+    position: absolute !important;
+    opacity: 0 !important;
+    cursor: pointer;
+}
+#D__ID .check_checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 22px;
+    width: 22px;
+    background-color: #C9C9C9;
+    border-radius: 0%;
+}
+#D__ID .checkboxes:hover input ~ .check_checkmark {
+    background-color: #506A88;
+}
+#D__ID .checkboxes input:checked ~ .check_checkmark {
+    background-color: rgb(7, 7, 7);
+}
+#D__ID .check_checkmark:after {
+    content: "";
+    position: absolute !important;
+    display: none;
+}
+/* Show the indicator (dot/circle) when checked */
+#D__ID .checkboxes input:checked ~ .check_checkmark:after {
+    display: block !important;
+}
+/* Style the indicator (dot/circle) */
+#D__ID .container .check_checkmark:after {
+    top: 0px;
+    left: 6px;
+    color:white;
+    content:"✔";
+}
+
+    </style>
 </div>

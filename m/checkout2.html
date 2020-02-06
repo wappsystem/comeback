@@ -13,53 +13,23 @@
                                 <div class="form-group">
                                     <div class="questiongroup">
                                         <fieldset class="">
-                                            <label id=Bill_Name__ID  class="">
+                                            <p class=check_label>Name</p><label id=Bill_Name__ID  class="">
                                             </label><br>
-                                            <label id=Bill_Address_1__ID class="">
+                                            <p class=check_label>Address 1</p><label id=Bill_Address_1__ID class="">
                                             </label><br>
-                                            <label id=Bill_Address_2__ID class="">
+                                            <p class=check_label>Address 2</p><label id=Bill_Address_2__ID class="">
                                             </label><br>
-                                            <label id=Bill_City__ID class="">
+                                            <p class=check_label>City</p><label id=Bill_City__ID class="">
                                             </label><br>
-                                            <label id=Bill_State__ID class="">
+                                            <p class=check_label>State</p><label id=Bill_State__ID class="">
                                             </label><br>
-                                            <label id=Bill_Country__ID class="">
+                                            <p class=check_label>Country</p><label id=Bill_Country__ID class="">
                                             </label><br>
-                                            <label id=Bill_Zip__ID class="">
+                                            <p class=check_label>Zip</p><label id=Bill_Zip__ID class="">
                                             </label><br>
-                                            <label id=Bill_Phone__ID class="">
+                                            <p class=check_label>Phone</p><label id=Bill_Phone__ID class="">
                                             </label><br>
-                                            <label id=Email__ID class="">
-                                            </label><br>
-                                        </fieldset>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class=col-4>
-                            <br>
-                            <h3>Shipping</h3>
-                            <div style='margin-left:auto;margin-right:auto;'>
-                                <div class="form-group">
-                                    <div class="questiongroup">
-                                        <fieldset class="">
-                                            <label><span id=Ship_Name__ID class=""></span>
-                                            </label><br>
-                                            <label><span id=Ship_Address_1__ID class=""></span>
-                                            </label><br>
-                                            <label><span id=Ship_Address_2__ID class=""></span>
-                                            </label><br>
-                                            <label><span id=Ship_City__ID class=""></span>
-                                            </label><br>
-                                            <label><span id=Ship_State__ID class=""></span>
-                                            </label><br>
-                                            <label><span id=Ship_Country__ID class=""></span>
-                                            </label><br>
-                                            <label><span id=Ship_Zip__ID class=""></span>
-                                            </label><br>
-                                            <label><span id=Ship_Phone__ID class=""></span>
-                                            </label><br>
-                                            <label><span id=Email__ID class=""></span>
+                                            <p class=check_label>Email</p><label id=Email__ID class="">
                                             </label><br>
                                         </fieldset>
                                     </div>
@@ -68,15 +38,43 @@
                         </div>
                         <div class=col-4>
                             <br>
-                            <h3>Cart</h3>
+                            <h5>Shipping</h5>
                             <div style='margin-left:auto;margin-right:auto;'>
                                 <div class="form-group">
                                     <div class="questiongroup">
                                         <fieldset class="">
-                                            <label>Comeback Complement<sup>&trade;</sup> 215g <br><span id=Compliment__ID class="">0</span> * USD 75.00
+                                            <p class=check_label>Name</p><label id=Ship_Name__ID class="">
                                             </label><br>
-                                            <label>Your Comeback Book <br><span id=Books__ID class="">0</span> * USD 50.00
+                                            <p class=check_label>Address 1</p><label id=Ship_Address_1__ID class="">
                                             </label><br>
+                                            <p class=check_label>Address 2</p><label id=Ship_Address_2__ID class="">
+                                            </label><br>
+                                            <p class=check_label>City</p><label id=Ship_City__ID class="">
+                                            </label><br>
+                                            <p class=check_label>State</p><label id=Ship_State__ID class="">
+                                            </label><br>
+                                            <p class=check_label>Country</p><label id=Ship_Country__ID class="">
+                                            </label><br>
+                                            <p class=check_label>Zip</p><label id=Ship_Zip__ID class="">
+                                            </label><br>
+                                            <p class=check_label>Phone</p><label id=Ship_Phone__ID class="">
+                                            </label><br>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=col-4>
+                            <br>
+                            <h5>Cart</h5>
+                            <div style='margin-left:auto;margin-right:auto;'>
+                                <div class="form-group">
+                                    <div class="questiongroup">
+                                        <fieldset class="">
+                                            <p class=check_label>Comeback Complement<sup>&trade;</sup> 215g @ USD 75.00</p><span id=Compliment__ID class="">0</span> * USD 75.00 = USD <span id=Compliment_sum__ID class=""></span>
+                                            <p class=check_label>Your Comeback Book @ UDS 50.00</p> <span id=Books__ID class="">0</span> * USD 50.00 = USD <span id=Books_sum__ID class=""></span>
+                                            </label><br>
+                                            <p></p>
                                             <label><b>Total USD</b> <span id=Total__ID class=""></span>
                                             </label><br>
                                         </fieldset>
@@ -85,8 +83,9 @@
                             </div>
                         </div>
                     </div>
-                    <div style="text-align:right">
-                        <button type="button" id=next2__ID class="btn-outline-light text-dark float-right">Next &nbsp;&nbsp;&nbsp;<img src="m/images/right-arrow-black.png"  ></img></button>
+                    <div>
+                        <button type="button" id=back3__ID class="btn-outline-light text-dark float-left"><img src="m/images/left-arrow-black.png"  ></img> &nbsp;&nbsp;&nbsp;Back</button>
+                        <button type="button" id=next3__ID class="btn-outline-light text-dark float-right">Pay &nbsp;&nbsp;&nbsp;<img src="m/images/right-arrow-black.png"  ></img></button>
                     </div>
                     <div class="form-group">
                         <div class="questiongroup ">
@@ -117,6 +116,7 @@
                 if(localStorage.getItem("Bill_Country")!=undefined) $("#Bill_Country__ID").html(localStorage.getItem("Bill_Country"));
                 if(localStorage.getItem("Bill_Zip")!=undefined) $("#Bill_Zip__ID").html(localStorage.getItem("Bill_Zip"));
                 if(localStorage.getItem("Bill_Phone")!=undefined) $("#Bill_Phone__ID").html(localStorage.getItem("Bill_Phone"));
+                if(localStorage.getItem("Email")!=undefined) $("#Email__ID").html(localStorage.getItem("Email"));
                 if(localStorage.getItem("Ship_Name")!=undefined) $("#Ship_Name__ID").html(localStorage.getItem("Ship_Name"));
                 if(localStorage.getItem("Ship_Address_1")!=undefined) $("#Ship_Address_1__ID").html(localStorage.getItem("Ship_Address_1"));
                 if(localStorage.getItem("Ship_Address_2")!=undefined) $("#Ship_Address_2__ID").html(localStorage.getItem("Ship_Address_2"));
@@ -125,9 +125,11 @@
                 if(localStorage.getItem("Ship_Country")!=undefined) $("#Ship_Country__ID").html(localStorage.getItem("Ship_Country"));
                 if(localStorage.getItem("Ship_Zip")!=undefined) $("#Ship_Zip__ID").html(localStorage.getItem("Ship_Zip"));
                 if(localStorage.getItem("Ship_Phone")!=undefined) $("#Ship_Phone__ID").html(localStorage.getItem("Ship_Phone"));
-                if(localStorage.getItem("compliment")!=undefined) $("#Compliment__ID").html(localStorage.getItem("compliment"));
-                if(localStorage.getItem("books")!=undefined) $("#Books__ID").html(localStorage.getItem("books"));
-                if(localStorage.getItem("subtotal")!=undefined) $("#Total__ID").html(localStorage.getItem("subtotal"));
+                if(sessionStorage.getItem("compliment")!=undefined) $("#Compliment__ID").html(sessionStorage.getItem("compliment"));
+                if(sessionStorage.getItem("compliment")!=undefined) $("#Compliment_sum__ID").html((sessionStorage.getItem("compliment")*75).toFixed(2));
+                if(sessionStorage.getItem("books")!=undefined) $("#Books__ID").html(sessionStorage.getItem("books"));
+                if(sessionStorage.getItem("books")!=undefined) $("#Books_sum__ID").html((sessionStorage.getItem("books")*50).toFixed(2));
+                if(sessionStorage.getItem("subtotal")!=undefined) $("#Total__ID").html((sessionStorage.getItem("subtotal")*1).toFixed(2));
                 $('#D__ID').scrollTop(0);
                 $(window).scrollTop(0);
                 m.input.goback = 1;
@@ -144,7 +146,7 @@
                 }
             })
             //--------------------------------------------------------
-            $('#next2__ID').on('click',function(){
+            $('#next3__ID').on('click',function(){
                 if($("input[name='Ship_Name']").val()=="") $("input[name='Ship_Name']").val($("input[name='Bill_Name']").val())
                 if($("input[name='Ship_Address_1']").val()=="") $("input[name='Ship_Address_1']").val($("input[name='Bill_Address_1']").val())
                 if($("input[name='Ship_Address_2']").val()=="") $("input[name='Ship_Address_2']").val($("input[name='Bill_Address_2']").val())
@@ -173,6 +175,15 @@
                 $vm.load_module('checkout2','',{});
             });
             //-------------------------------
+            $('#back3__ID').on('click',function(){
+                $vm.load_module('checkout1','',{});
+            });
+            //-------------------------------
+            $('#next3__ID').on('click',function(){
+                $vm.alert("Payment")
+                //$vm.load_module('payment','',{});
+            });
+            //-------------------------------
             $(this).scrollTop(0);
             //-------------------------------------
 			var before_submit = m.before_submit;
@@ -187,7 +198,13 @@
         }
     </script>
     <style>
-#next2__ID{
+.check_label{
+    font-size: 10px;
+    font-style: italic;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+#next3__ID,#back3__ID{
     display: inline-block;
     font-weight: 400;
     text-align: center;

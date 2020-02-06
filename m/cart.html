@@ -5,7 +5,7 @@
                 <div class="col-12 col-lg-9 col-md-11 col-sm-12 mx-auto formbox">
 					<form id=F__ID>
 						<div class='mains__ID'>
-							<p style='font-size: 30px;margin:5%;text-align:left'>Cart</p>
+							<p style='font-size:30px;text-align:left'>Cart</p>
 						</div>
                         <hr>
                         <div class="row fontcart">
@@ -70,7 +70,10 @@
 	    					</div>
                         </div>
                         <hr>
-                        <div class="pr-4">
+                        <div class="">
+                            <button type="button" id=back1__ID class="btn-outline-light text-dark float-left"><img src="m/images/left-arrow-black.png"  ></img> &nbsp;&nbsp;&nbsp;Back</button>
+                        </div>
+                        <div class="">
                             <button type="button" id=next1__ID class="btn-outline-light text-dark float-right">Next &nbsp;&nbsp;&nbsp;<img src="m/images/right-arrow-black.png"  ></img></button>
                         </div>
 					</form>
@@ -85,21 +88,21 @@
             //-------------------------------------
             //var load2 = m.load;
             m.load = function () {
-                if(isNaN(localStorage.getItem("compliment"))) {
+                if(isNaN(sessionStorage.getItem("compliment")) || sessionStorage.getItem("compliment")==null) {
                     $('input[name="compliment_quantity__ID"]').val("0")
                     $('#total_compliment__ID').html('USD 0.00')
                 }
                 else {
-                    $('input[name="compliment_quantity__ID"]').val(localStorage.getItem("compliment"));
-                    $('#total_compliment__ID').html('USD '+(parseInt(localStorage.getItem("compliment"))*75).toString()+'.00')
+                    $('input[name="compliment_quantity__ID"]').val(sessionStorage.getItem("compliment"));
+                    $('#total_compliment__ID').html('USD '+(parseInt(sessionStorage.getItem("compliment"))*75).toFixed(2))
                 }
-                if(isNaN(localStorage.getItem("books"))) {
+                if(isNaN(sessionStorage.getItem("books")) || sessionStorage.getItem("books")==null) {
                     $('input[name="book_quantity__ID"]').val("0")
                     $('#total_book__ID').html('USD 0.00')
                 }
                 else {
-                    $('input[name="book_quantity__ID"]').val(localStorage.getItem("books"));
-                    $('#total_book__ID').html('USD '+(parseInt(localStorage.getItem("books"))*50).toString()+'.00')
+                    $('input[name="book_quantity__ID"]').val(sessionStorage.getItem("books"));
+                    $('#total_book__ID').html('USD '+(parseInt(sessionStorage.getItem("books"))*50).toFixed(2))
                 }
                 total_sum();
             }
@@ -122,9 +125,13 @@
     		$('html, body').animate({ scrollTop: $('#cart__ID').offset().top-100}, 800, 'linear');
         })
 */        
-
+        //-------------------------------
         $('#next1__ID').on('click',function(){
             $vm.load_module('checkout1','',{});
+        });
+        //-------------------------------
+        $('#back1__ID').on('click',function(){
+            $vm.load_module('home','',{});
         });
         //-------------------------------
 		$('#subtract_compliment__ID').on('click',function(e){
@@ -132,14 +139,14 @@
             if(comp_items >= 1) comp_items--;
             else comp_items=0;
             $('input[name="compliment_quantity__ID"]').val(comp_items.toString())
-            $('#total_compliment__ID').html('USD '+(comp_items*75).toString()+'.00')
+            $('#total_compliment__ID').html('USD '+(comp_items*75).toFixed(2))
             total_sum();
 		})
 		$('#add_compliment__ID').on('click',function(e){
             var comp_items=parseInt($('input[name="compliment_quantity__ID"]').val());
             comp_items++;
             $('input[name="compliment_quantity__ID"]').val(comp_items.toString())
-            $('#total_compliment__ID').html('USD '+(comp_items*75).toString()+'.00')
+            $('#total_compliment__ID').html('USD '+(comp_items*75).toFixed(2))
             total_sum();
 		})
 		$('#subtract_book__ID').on('click',function(e){
@@ -147,14 +154,14 @@
             if(comp_items >= 1) comp_items--;
             else comp_items=0;
             $('input[name="book_quantity__ID"]').val(comp_items.toString())
-            $('#total_book__ID').html('USD '+(comp_items*50).toString()+'.00')
+            $('#total_book__ID').html('USD '+(comp_items*50).toFixed(2))
             total_sum();
 		})
 		$('#add_book__ID').on('click',function(e){
             var comp_items=parseInt($('input[name="book_quantity__ID"]').val());
             comp_items++;
             $('input[name="book_quantity__ID"]').val(comp_items.toString())
-            $('#total_book__ID').html('USD '+(comp_items*50).toString()+'.00')
+            $('#total_book__ID').html('USD '+(comp_items*50).toFixed(2))
             total_sum();
         })
         var total_sum=function(){
@@ -162,16 +169,16 @@
             var total_items=parseInt($('input[name="compliment_quantity__ID"]').val())*75;
             total_items+=parseInt($('input[name="book_quantity__ID"]').val())*50;
             subtotal=total_items;
-            $('#total__ID').html('USD '+(total_items).toString()+'.00');
-            $('#subtotal_compliment_book').html("SUBTOTAL: USD "+(total_items).toString()+".00");
-            localStorage.setItem("subtotal", subtotal);
+            $('#total__ID').html('USD '+(total_items).toFixed(2));
+            $('#subtotal_compliment_book').html("SUBTOTAL: USD "+(total_items).toFixed(2));
+            sessionStorage.setItem("subtotal", subtotal);
             total_count();
 
         }
         var total_count=function(){
             var total_items=parseInt($('input[name="compliment_quantity__ID"]').val());
-            localStorage.setItem("compliment", total_items);
-            localStorage.setItem("books", parseInt($('input[name="book_quantity__ID"]').val()));
+            sessionStorage.setItem("compliment", total_items);
+            sessionStorage.setItem("books", parseInt($('input[name="book_quantity__ID"]').val()));
             total_items+=parseInt($('input[name="book_quantity__ID"]').val());
             $('#cart_size').html(total_items.toString());
             $('#compliment_count').html($('input[name="compliment_quantity__ID"]').val()+" x USD 75.00");
@@ -205,7 +212,7 @@
   border-radius: 50%;
   padding: 0.25em 0.8em;
 }
-#next1__ID{
+#next1__ID,#back1__ID{
     display: inline-block;
     font-weight: 400;
     text-align: center;

@@ -87,14 +87,14 @@
             */
         }
         //------------------------------------
-        var compliment_val=parseInt(localStorage.getItem("compliment"));
-        var book_val=parseInt(localStorage.getItem("books"));
+        var compliment_val=parseInt(sessionStorage.getItem("compliment"));
+        var book_val=parseInt(sessionStorage.getItem("books"));
         if(isNaN(compliment_val)) compliment_val=0;
         if(isNaN(book_val)) book_val=0;
         $('#cart_size').html((compliment_val+book_val).toString());
         $('#compliment_count').html(compliment_val.toString()+" x USD 75.00");
         $('#book_count').html(book_val.toString()+" x USD 50.00");
-        $('#subtotal_compliment_book').html("SUBTOTAL: USD "+(compliment_val*75+book_val*50).toString()+".00")
+        $('#subtotal_compliment_book').html("SUBTOTAL: USD "+(compliment_val*75+book_val*50).toFixed(2))
         //------------------------------------
         $('.vm-menu a').on('click',function(e){
             e.preventDefault();

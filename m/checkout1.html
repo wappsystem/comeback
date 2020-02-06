@@ -43,11 +43,12 @@
                         <div class="form-group">
                             <div class="questiongroup ">
                                 <fieldset class="">
-                                    <label class="checkboxes">
-                                        <input type="checkbox" name="Delivery" checked>
-                                        <span class="check_checkmark"></span> Shipping details same as billing
-                                    </label><br>
-                                </fieldset>
+                                    <!-- Default unchecked -->
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" name="Delivery" id="defaultUnchecked" checked>
+                                        <label class="custom-control-label" for="defaultUnchecked">Shipping details same as billing</label>
+                                    </div>                                    
+                                 </fieldset>
                             </div>
                         </div>
                         <br>
@@ -87,6 +88,7 @@
                             </div>
                         </div>
                         <div style="text-align:right">
+                            <button type="button" id=back2__ID class="btn-outline-light text-dark float-left"><img src="m/images/left-arrow-black.png"  ></img> &nbsp;&nbsp;&nbsp;Back</button>
                             <button type="submit" id=next2__ID class="btn-outline-light text-dark float-right">Next &nbsp;&nbsp;&nbsp;<img src="m/images/right-arrow-black.png"  ></img></button>
                         <div class="form-group">
                             <div class="questiongroup ">
@@ -105,7 +107,7 @@
     <script>
         function F__ID() {
             //-------------------------------------
-           // Vm Include: __COMPONENT__/f/form.01.js
+            VmInclude: __COMPONENT__/f/form.01.js
            var m={}
             //-------------------------------------
             $('#F__ID').submit(function(event){m.submit(event);})
@@ -116,7 +118,6 @@
                 next_page();
             }
             //--------------------------------------------------------
-            m.default_load = m.load;
             m.load = function () {
                 if($("input[name='Delivery']").is(":checked") == false ){
                     $('#shipping__ID').prop('style','display:block!important');
@@ -140,10 +141,28 @@
                     $("input[name='Ship_Zip']").removeAttr('required');;
                     $("input[name='Ship_Phone']").removeAttr('required');;
                 }
-                m.default_load();
+                if(isNaN(localStorage.getItem("Email")) || localStorage.getItem("Email")!=null) {                    
+                    $("input[name='Bill_Name']").val(localStorage.getItem("Bill_Name"));
+                    $("input[name='Bill_Address_1']").val(localStorage.getItem("Bill_Address_1"));
+                    $("input[name='Bill_Address_2']").val(localStorage.getItem("Bill_Address_2"));
+                    $("input[name='Bill_City']").val(localStorage.getItem("Bill_City"));
+                    $("input[name='Bill_State']").val(localStorage.getItem("Bill_State"));
+                    $("input[name='Bill_Country']").val(localStorage.getItem("Bill_Country"));
+                    $("input[name='Bill_Zip']").val(localStorage.getItem("Bill_Zip"));
+                    $("input[name='Bill_Phone']").val(localStorage.getItem("Bill_Phone"));
+                    $("input[name='Ship_Name']").val(localStorage.getItem("Ship_Name"));
+                    $("input[name='Ship_Address_1']").val(localStorage.getItem("Ship_Address_1"));
+                    $("input[name='Ship_Address_2']").val(localStorage.getItem("Ship_Address_2"));
+                    $("input[name='Ship_City']").val(localStorage.getItem("Ship_City"));
+                    $("input[name='Ship_State']").val(localStorage.getItem("Ship_State"));
+                    $("input[name='Ship_Country']").val(localStorage.getItem("Ship_Country"));
+                    $("input[name='Ship_Zip']").val(localStorage.getItem("Ship_Zip"));
+                    $("input[name='Ship_Phone']").val(localStorage.getItem("Ship_Phone"));
+                    $("input[name='Email']").val(localStorage.getItem("Email"));
+                }
                 $('#D__ID').scrollTop(0);
                 $(window).scrollTop(0);
-                m.input.goback = 1;
+                //m.input.goback = 1;
             }
             //--------------------------------------------------------          
             $('#D__ID').css('min-height', $vm.min_height);
@@ -173,6 +192,10 @@
                 }
             })
             //--------------------------------------------------------
+            $('#back2__ID').on('click',function(){
+                $vm.load_module('cart','',{});
+            });
+            //-------------------------------
            var next_page=function(){
                 if($("input[name='Ship_Name']").val()=="") $("input[name='Ship_Name']").val($("input[name='Bill_Name']").val())
                 if($("input[name='Ship_Address_1']").val()=="") $("input[name='Ship_Address_1']").val($("input[name='Bill_Address_1']").val())
@@ -207,7 +230,10 @@
         }
     </script>
     <style>
-#next2__ID{
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before{
+  background-color:black;
+}        
+#next2__ID,#back2__ID{
     display: inline-block;
     font-weight: 400;
     text-align: center;
@@ -532,8 +558,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    height: 22px;
-    width: 22px;
+    height: 26px;
+    width: 26px;
     background-color: #C9C9C9;
     border-radius: 0%;
 }
@@ -551,14 +577,18 @@
 /* Show the indicator (dot/circle) when checked */
 #D__ID .checkboxes input:checked ~ .check_checkmark:after {
     display: block !important;
-}
-/* Style the indicator (dot/circle) */
-#D__ID .container .check_checkmark:after {
     top: 0px;
     left: 6px;
     color:white;
     content:"✔";
 }
+/* Style the indicator (dot/circle) */
+/*#D__ID .container .check_checkmark:after {
+    top: 0px;
+    left: 0px;
+    color:white;
+    content:"✔";
+}*/
 
     </style>
 </div>

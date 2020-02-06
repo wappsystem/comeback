@@ -200,6 +200,26 @@
 				
 				var url=$vm.module_list["payment"].url;
 				window.open(url);
+                
+                
+                localStorage.setItem("stripe-result","");
+                var I=0;
+                var loop=setInterval(function (){
+                    var R=localStorage.getItem("stripe-result");
+                    if(R!=""){
+                        clearInterval(loop); 
+                        alert(R);
+                        var jR=JSON.parse(R);
+                        alert(jR.status);
+                    }
+                    I++; if(I>100){
+                        clearInterval(loop); 
+                        alert("Timeout, 10s");
+                    }
+                },100);
+                //-------------------------------------
+
+
 
 
             });

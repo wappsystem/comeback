@@ -159,6 +159,12 @@ var pay = function(stripe, card) {
 var orderComplete = function(clientSecret) {
   stripe.retrievePaymentIntent(clientSecret).then(function(result) {
     var paymentIntent = result.paymentIntent;
+    //***************************
+    //alert(JSON.stringify(paymentIntent));
+    localStorage.setItem("stripe-result",JSON.stringify(paymentIntent));
+    //window.opener.postMessage(JSON.stringify(paymentIntent), "*");
+    window.close();
+    //***************************
     var paymentIntentJson = JSON.stringify(paymentIntent, null, 2);
 
     document.querySelector(".sr-payment-form").classList.add("hidden");

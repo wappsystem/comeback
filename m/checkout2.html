@@ -180,8 +180,28 @@
             });
             //-------------------------------
             $('#next3__ID').on('click',function(){
-                $vm.alert("Payment")
+                //$vm.alert("Payment")
                 //$vm.load_module('payment','',{});
+
+
+    			event.preventDefault();
+				
+
+
+                $vm.stripe_shorpping_cart=[
+                    {item:"compliment", qty:sessionStorage.getItem("compliment"),amount:"123.00"},
+                    //{item:"Pen", qty:"2",amount:"18.00"}
+                ]
+                $vm.stripe_shorpping_total_amount="12300";
+
+
+				sessionStorage.setItem("shopping_items",JSON.stringify($vm.stripe_shorpping_cart));
+				sessionStorage.setItem("shopping_amount",$vm.stripe_shorpping_total_amount);
+				
+				var url=$vm.module_list["payment"].url;
+				window.open(url);
+
+
             });
             //-------------------------------
             $(this).scrollTop(0);

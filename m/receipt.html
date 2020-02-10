@@ -1,0 +1,115 @@
+<div id=D__ID>
+    <div id=container__ID style='margin-top:auto;margin-left:auto;margin-right:auto;padding-top:100px;width:21cm;'>
+        <div style="display:flex;">
+            <div style='float:left;width:60%'>
+                    <br>Comeback Inc
+                    <br>1912 Harvest Lane
+                    <br>New York, NY 12210
+            </div>
+            <div style='float:right;width:40%;'>
+                    <br><span style='font-size: 160%'><b>Invoice</b></span>
+                    <br><span style='color:red' id=no__ID></span>
+                    <br>Issue Date: <span id=Issue_Date__ID></span>
+                    <br>Due Date: <span id=Due_Date__ID></span>
+            </div>
+        </div>
+        <div style="display:flex;">
+            <div style='float:left;width:50%;clear:left;font-size:100%;font-weight:bold;'>
+                <br>Bill To
+                <br><span style='font-size:100%;font-weight:normal;' id=Client_bill__ID ></span>
+            </div>
+            <div style='float:left;width:50%;clear:left;font-size:100%;font-weight:bold;'>
+                <br>Ship To
+                <br><span style='font-size:100%;font-weight:normal;' id=Client_ship__ID ></span>
+            </div>
+        </div>
+        <div style='width:100%;float:left;clear:left'><br><br><b>Order Number: <span id=order_number__ID></span></b></div>
+        <div style='width:100%;float:left;clear:left'><b>Invoice Items:</b></div>
+        <hr style='width:100%;float:left;clear:left;margin-top:6px;'>
+        <div id=items__ID style='width:100%;float:left;clear:left'></div>
+        <hr style='width:100%;float:left;clear:left;margin-bottom:6px;'>
+        <div style='float:right'>
+                <br><b>Total: <span id=Total__ID style='float:right;margin-left:20px'></span></b>
+                <br><b>Paid: <span id=Paid__ID style='float:right;margin-left:20px'></span></b>
+                <br><b>Outstanding: <span id=Outstanding__ID style='float:right;margin-left:20px'></span></b>
+                <br><br>
+                <input type="button" style='float:right;' id=printPageButton value="Print" onclick="window.print()" /> 
+            </div>
+        <form id=F__ID>
+        </form>
+    </div>
+    <script>
+        function F__ID(){
+            //---------------------------------------------
+            VmInclude:__COMPONENT__/f/form.01.js
+            //---------------------------------------------
+            $('#D__ID').on('load',function(){
+//                m.item_a_records=[]; if(m.input.record!=undefined) m.item_a_records=m.input.record.Data.items;
+/*                jQuery.ajaxSetup({async:false});
+                $vm.request({cmd:'find',table:"comeback-order",query:{UID:17},limit:1},function(res){
+                  console.log(JSON.stringify(res.result[0]))
+                  m.item_a_records=res.result[0].Data.items
+                  m.input.record=res.result[0]
+                });
+*/                
+                m.item_a_records=[]; if(m.input.record!=undefined) m.item_a_records=m.input.record.Data.items;
+                var txt="<table style='width:100%'>";
+                txt=txt+"<tr><th>Description</td><th style='text-align: right;'>Unit Price</th><th style='text-align: right;'>Quantity</th><th style='text-align: right;'>Amount</th>";
+                for(var i=m.item_a_records.length-1;i>-1;i--){
+                    var GST="";
+                    txt+="<tr><td>"+m.item_a_records[i].Product_ID+"</td>";
+                    txt+="<td style='text-align: right;'>"+formatter.format(m.item_a_records[i].Unit_Price)+"</td>";
+                    txt+="<td style='text-align: right;'>"+m.item_a_records[i].Quantity+"</td>";
+                    txt+="<td style='text-align: right;'>"+formatter.format(m.item_a_records[i].Amount)+"</td></tr>";
+                }
+                txt+="</table>"
+//                jQuery.ajaxSetup({async:true});
+                $('#items__ID').html(txt);
+                $('#no__ID').html("No. "+m.input.record.UID);
+                $('#order_number__ID').text(m.input.record.UID);
+                $('#Total__ID').text(formatter.format(m.input.record.Data.Total));
+                $('#Paid__ID').text(formatter.format((m.input.record.Data.stripe[0].amount/100).toFixed(2)));
+                $('#Outstanding__ID').text(formatter.format((parseFloat(m.input.record.Data.Total)-m.input.record.Data.stripe[0].amount/100).toFixed(2)));
+                var usdate=(m.input.record.Data.Date).split(' ');
+                $('#Issue_Date__ID').text(usdate[0]);
+                $('#Due_Date__ID').text(usdate[0]);
+                $('#Client_bill__ID').html(m.input.record.Data.Bill_Name+'<br>'+m.input.record.Data.Bill_Address_1+'<br>'+m.input.record.Data.Bill_Address_2+'<br>'+m.input.record.Data.Bill_City+','+m.input.record.Data.Bill_State+','+m.input.record.Data.Bill_Zip+'<br>'+m.input.record.Data.Bill_Country)
+                $('#Client_ship__ID').html(m.input.record.Data.Ship_Name+'<br>'+m.input.record.Data.Ship_Address_1+'<br>'+m.input.record.Data.Ship_Address_2+'<br>'+m.input.record.Data.Ship_City+', '+m.input.record.Data.Ship_State+', '+m.input.record.Data.Ship_Zip+'<br>'+m.input.record.Data.Ship_Country)
+            })
+            var formatter = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2,
+            });
+    //-------------------------------------
+
+        }
+    </script>
+    <style>
+		#D__ID{
+			height:100%;
+	        overflow:auto;
+			align-items: center;
+			font-family: "Montserrat";
+            background: rgb(233, 230, 222);
+
+			/*animation: vm_module_fadein 1.0s, D__ID 3s;*/
+		}
+        #D__ID hr{
+            width: 100%;
+            float: left;
+            clear: left;
+            margin-top: 6px;
+            border: 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.3);
+            margin-left: 0;
+            margin-right: 0;
+        }
+        @media print {
+            #printPageButton {
+            display: none;
+            }
+        }
+
+    </style>
+</div>

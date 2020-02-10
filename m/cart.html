@@ -10,7 +10,7 @@
                         <hr>
                         <div class="row fontcart">
                             <div class="col-lg-6 align-self-center pl-5">
-    							Comeback Complement<sup>&trade;</sup> 215g USD75.00
+    							Comeback Complement<sup>&trade;</sup> 215g USD <span id=compliment_price__ID></span>
 	    					</div>
                             <!-- Change the `data-field` of buttons and `name` of input field's for multiple plus minus buttons-->
                             <div class="col-lg-3  align-self-center">
@@ -20,7 +20,7 @@
                                         <i class="fa fa-minus" aria-hidden="true"></i>
                                     </p>
                                     </div>
-                                    <input class="input-group-field" style='width:4rem' type="number" min=0 name="compliment_quantity__ID" value="0">
+                                    <input class="input-group-field" style='width:4rem' type="text" name="compliment_quantity__ID" value="0">
                                     <div class="input-group-button">
                                         <p id=add_compliment__ID  style='cursor:pointer;margin-bottom:0;margin-top: 0;'>
                                             <i class="fa fa-plus" aria-hidden="true"></i>
@@ -35,7 +35,7 @@
                         <hr>
                         <div class="row fontcart">
                             <div class="col-lg-6 align-self-center pl-5">
-    							Your Comeback Book USD50.00
+    							Your Comeback Book USD<span id=book_price__ID></span>
 	    					</div>
                             <!-- Change the `data-field` of buttons and `name` of input field's for multiple plus minus buttons-->
                             <div class="col-lg-3  align-self-center">
@@ -86,15 +86,21 @@
             //-------------------------------------
             VmInclude: '__COMPONENT__/f/form.01.js'
             //-------------------------------------
+            var compliment_price="";
+            var book_price="";
             //var load2 = m.load;
             m.load = function () {
+                compliment_price=sessionStorage.getItem("compliment_price");
+                book_price=sessionStorage.getItem("book_price");
+                $('#compliment_price__ID').html(compliment_price)
+                $('#book_price__ID').html(book_price)
                 if(isNaN(sessionStorage.getItem("compliment")) || sessionStorage.getItem("compliment")==null) {
                     $('input[name="compliment_quantity__ID"]').val("0")
                     $('#total_compliment__ID').html('USD 0.00')
                 }
                 else {
                     $('input[name="compliment_quantity__ID"]').val(sessionStorage.getItem("compliment"));
-                    $('#total_compliment__ID').html('USD '+(parseInt(sessionStorage.getItem("compliment"))*75).toFixed(2))
+                    $('#total_compliment__ID').html('USD '+(parseInt(sessionStorage.getItem("compliment"))*parseInt(compliment_price)).toFixed(2))
                 }
                 if(isNaN(sessionStorage.getItem("books")) || sessionStorage.getItem("books")==null) {
                     $('input[name="book_quantity__ID"]').val("0")
@@ -102,7 +108,7 @@
                 }
                 else {
                     $('input[name="book_quantity__ID"]').val(sessionStorage.getItem("books"));
-                    $('#total_book__ID').html('USD '+(parseInt(sessionStorage.getItem("books"))*50).toFixed(2))
+                    $('#total_book__ID').html('USD '+(parseInt(sessionStorage.getItem("books"))*parseInt(book_price)).toFixed(2))
                 }
                 total_sum();
             }
@@ -139,14 +145,14 @@
             if(comp_items >= 1) comp_items--;
             else comp_items=0;
             $('input[name="compliment_quantity__ID"]').val(comp_items.toString())
-            $('#total_compliment__ID').html('USD '+(comp_items*75).toFixed(2))
+            $('#total_compliment__ID').html('USD '+(comp_items*parseInt(compliment_price)).toFixed(2))
             total_sum();
 		})
 		$('#add_compliment__ID').on('click',function(e){
             var comp_items=parseInt($('input[name="compliment_quantity__ID"]').val());
             comp_items++;
             $('input[name="compliment_quantity__ID"]').val(comp_items.toString())
-            $('#total_compliment__ID').html('USD '+(comp_items*75).toFixed(2))
+            $('#total_compliment__ID').html('USD '+(comp_items*parseInt(compliment_price)).toFixed(2))
             total_sum();
 		})
 		$('#subtract_book__ID').on('click',function(e){
@@ -154,20 +160,20 @@
             if(comp_items >= 1) comp_items--;
             else comp_items=0;
             $('input[name="book_quantity__ID"]').val(comp_items.toString())
-            $('#total_book__ID').html('USD '+(comp_items*50).toFixed(2))
+            $('#total_book__ID').html('USD '+(comp_items*parseInt(book_price)).toFixed(2))
             total_sum();
 		})
 		$('#add_book__ID').on('click',function(e){
             var comp_items=parseInt($('input[name="book_quantity__ID"]').val());
             comp_items++;
             $('input[name="book_quantity__ID"]').val(comp_items.toString())
-            $('#total_book__ID').html('USD '+(comp_items*50).toFixed(2))
+            $('#total_book__ID').html('USD '+(comp_items*parseInt(book_price)).toFixed(2))
             total_sum();
         })
         var total_sum=function(){
             var subtotal=0;
-            var total_items=parseInt($('input[name="compliment_quantity__ID"]').val())*75;
-            total_items+=parseInt($('input[name="book_quantity__ID"]').val())*50;
+            var total_items=parseInt($('input[name="compliment_quantity__ID"]').val())*parseInt(compliment_price);
+            total_items+=parseInt($('input[name="book_quantity__ID"]').val())*parseInt(book_price);
             subtotal=total_items;
             $('#total__ID').html('USD '+(total_items).toFixed(2));
             $('#subtotal_compliment_book').html("SUBTOTAL: USD "+(total_items).toFixed(2));
@@ -181,8 +187,8 @@
             sessionStorage.setItem("books", parseInt($('input[name="book_quantity__ID"]').val()));
             total_items+=parseInt($('input[name="book_quantity__ID"]').val());
             $('#cart_size').html(total_items.toString());
-            $('#compliment_count').html($('input[name="compliment_quantity__ID"]').val()+" x USD 75.00");
-            $('#book_count').html($('input[name="book_quantity__ID"]').val()+" x USD 50.00");
+            $('#compliment_count').html($('input[name="compliment_quantity__ID"]').val()+" x USD "+compliment_price);
+            $('#book_count').html($('input[name="book_quantity__ID"]').val()+" x USD "+book_price);
         }
     }   		
     </script>

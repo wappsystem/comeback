@@ -33,9 +33,9 @@
             <div class="rightsidenav_links__ID">
                 <hr>
                 <p style='font-size: 24px;'>Cart</p>
-                <p style='font-size: 16px;'>Comeback Complement, 215G</p>
+                <p style='font-size: 16px;'>Comeback Complement<sup>&trade;</sup> 215g</p>
                 <p id=compliment_count style='font-size: 16px;'></p>
-                <p style='font-size: 16px;'>Comeback Book</p>
+                <p style='font-size: 16px;'>Your Comeback Book</p>
                 <p id=book_count style='font-size: 16px;'></p>
                 <hr>
                 <p id=subtotal_compliment_book class="letterspace" style='font-size: 15px;font-weight:bold;'></p>
@@ -45,7 +45,6 @@
         </div>
     </div>
     <script>
-
         $vm.openNav=function() {
             document.getElementById("mySidenav__ID").style.width = "350px";
         }
@@ -59,12 +58,43 @@
             else{
                 document.getElementById("rightsidenav__ID").style.width = "350px";
             }
+            jQuery.ajaxSetup({async:false});
+            if(isNaN(sessionStorage.getItem("compliment")) || sessionStorage.getItem("compliment")==null || sessionStorage.getItem("compliment")=="0") {
+                var tb=$vm.module_list['header'].Table;
+                //------------------------------------
+                $vm.request({cmd:'find',table:tb},function(res){
+                    if(res.status=='np'){
+                        res.result=0;
+                    }
+                    else{
+                        if(res.result[0].Data.item_name=="Book"){
+                            sessionStorage.setItem("book_price",res.result[0].Data.amount_usd);
+                            sessionStorage.setItem("compliment_price",res.result[1].Data.amount_usd);
+                        }
+                        else{
+                            sessionStorage.setItem("book_price",res.result[1].Data.amount_usd);
+                            sessionStorage.setItem("compliment_price",res.result[0].Data.amount_usd);
+                        }
+                    }
+                });
+            }
+            $('#compliment_count').html(compliment_val.toString()+" x USD "+sessionStorage.getItem("compliment_price"));
+            $('#book_count').html(book_val.toString()+" x USD "+sessionStorage.getItem("book_price"));
+            $('#subtotal_compliment_book').html("SUBTOTAL: USD "+(compliment_val*parseInt(sessionStorage.getItem("compliment_price"))+book_val*parseInt(sessionStorage.getItem("book_price"))).toFixed(2))
+            jQuery.ajaxSetup({async:true});
+            //------------------------------------
         }
         $vm.closeCart=function(){
             document.getElementById("rightsidenav__ID").style.width = "0";
         }
-
-
+        var compliment_price=sessionStorage.getItem("compliment_price");
+        var book_price=sessionStorage.getItem("book_price");
+        var compliment_val=parseInt(sessionStorage.getItem("compliment"));
+        var book_val=parseInt(sessionStorage.getItem("books"));
+        if(isNaN(compliment_val)) compliment_val=0;
+        if(isNaN(book_val)) book_val=0;
+        $('#cart_size').html((compliment_val+book_val).toString());
+        //------------------------------------
         $('#close__ID').css('padding-left',-20+$(window).width()*0.08+"px");
         $('#closeright__ID').css('padding-right',-20+$(window).width()*0.08+"px");
         //------------------------------------
@@ -87,15 +117,6 @@
             */
         }
         //------------------------------------
-        var compliment_val=parseInt(sessionStorage.getItem("compliment"));
-        var book_val=parseInt(sessionStorage.getItem("books"));
-        if(isNaN(compliment_val)) compliment_val=0;
-        if(isNaN(book_val)) book_val=0;
-        $('#cart_size').html((compliment_val+book_val).toString());
-        $('#compliment_count').html(compliment_val.toString()+" x USD 75.00");
-        $('#book_count').html(book_val.toString()+" x USD 50.00");
-        $('#subtotal_compliment_book').html("SUBTOTAL: USD "+(compliment_val*75+book_val*50).toFixed(2))
-        //------------------------------------
         $('.vm-menu a').on('click',function(e){
             e.preventDefault();
             var dev=$(this).attr('dev');
@@ -116,7 +137,7 @@
         //------------------------------------
         $('#view_cart__ID').on('click',function(){
             $vm.closeCart();
-            $vm.load_module('cart','',{});
+           $vm.load_module('cart','',{});
         })
 
         /*

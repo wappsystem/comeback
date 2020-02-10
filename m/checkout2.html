@@ -2,7 +2,7 @@
     <!--third html start -->
     <div class="container mt-95 mb-3 checkout2">
         <div class="row">
-            <div class="col-12 col-lg-9 col-md-11 col-sm-12 mx-auto formbox">
+            <div class="col-12 col-lg-9 col-md-11 col-sm-12 mx-auto formbox pt-4">
                 <form id=F__ID>
                     <h3>Please check details</h3>
                     <div class=row >
@@ -13,24 +13,15 @@
                                 <div class="form-group">
                                     <div class="questiongroup">
                                         <fieldset class="">
-                                            <p class=check_label>Name</p><label id=Bill_Name__ID  class="">
-                                            </label><br>
-                                            <p class=check_label>Address 1</p><label id=Bill_Address_1__ID class="">
-                                            </label><br>
-                                            <p class=check_label>Address 2</p><label id=Bill_Address_2__ID class="">
-                                            </label><br>
-                                            <p class=check_label>City</p><label id=Bill_City__ID class="">
-                                            </label><br>
-                                            <p class=check_label>State</p><label id=Bill_State__ID class="">
-                                            </label><br>
-                                            <p class=check_label>Country</p><label id=Bill_Country__ID class="">
-                                            </label><br>
-                                            <p class=check_label>Zip</p><label id=Bill_Zip__ID class="">
-                                            </label><br>
-                                            <p class=check_label>Phone</p><label id=Bill_Phone__ID class="">
-                                            </label><br>
-                                            <p class=check_label>Email</p><label id=Email__ID class="">
-                                            </label><br>
+                                            <p class=check_label>Name</p><input name=Bill_Name id=Bill_Name__ID type=text class="" readonly \><br>
+                                            <p class=check_label>Address 1</p><input name=Bill_Address_1 id=Bill_Address_1__ID type=text class="" readonly \><br>
+                                            <p class=check_label>Address 2</p><input name=Bill_Address_2 id=Bill_Address_2__ID type=text class="" readonly \><br>
+                                            <p class=check_label>City</p><input name=Bill_City id=Bill_City__ID type=text class="" readonly \><br>
+                                            <p class=check_label>State</p><input name=Bill_State id=Bill_State__ID type=text class="" readonly \><br>
+                                            <p class=check_label>Country</p><input name=Bill_Country id=Bill_Country__ID type=text class="" readonly \><br>
+                                            <p class=check_label>Zip</p><input name=Bill_Zip id=Bill_Zip__ID type=text class="" readonly \><br>
+                                            <p class=check_label>Phone</p><input name=Bill_Phone id=Bill_Phone__ID type=text class="" readonly \><br>
+                                            <p class=check_label>Email</p><input name=Bill_Email id=Email__ID type=text class="" readonly \><br>
                                         </fieldset>
                                     </div>
                                 </div>
@@ -43,22 +34,14 @@
                                 <div class="form-group">
                                     <div class="questiongroup">
                                         <fieldset class="">
-                                            <p class=check_label>Name</p><label id=Ship_Name__ID class="">
-                                            </label><br>
-                                            <p class=check_label>Address 1</p><label id=Ship_Address_1__ID class="">
-                                            </label><br>
-                                            <p class=check_label>Address 2</p><label id=Ship_Address_2__ID class="">
-                                            </label><br>
-                                            <p class=check_label>City</p><label id=Ship_City__ID class="">
-                                            </label><br>
-                                            <p class=check_label>State</p><label id=Ship_State__ID class="">
-                                            </label><br>
-                                            <p class=check_label>Country</p><label id=Ship_Country__ID class="">
-                                            </label><br>
-                                            <p class=check_label>Zip</p><label id=Ship_Zip__ID class="">
-                                            </label><br>
-                                            <p class=check_label>Phone</p><label id=Ship_Phone__ID class="">
-                                            </label><br>
+                                            <p class=check_label>Name</p><input name=Ship_Name id=Ship_Name__ID type=text class="" readonly \><br>
+                                            <p class=check_label>Address 1</p><input name=Ship_Address_1 id=Ship_Address_1__ID type=text class="" readonly \><br>
+                                            <p class=check_label>Address 2</p><input name=Ship_Address_2 id=Ship_Address_2__ID type=text class="" readonly \><br>
+                                            <p class=check_label>City</p><input name=Ship_City id=Ship_City__ID type=text class="" readonly \><br>
+                                            <p class=check_label>State</p><input name=Ship_State id=Ship_State__ID type=text class="" readonly \><br>
+                                            <p class=check_label>Country</p><input name=Ship_Country id=Ship_Country__ID type=text class="" readonly \><br>
+                                            <p class=check_label>Zip</p><input name=Ship_Zip id=Ship_Zip__ID type=text class="" readonly \><br>
+                                            <p class=check_label>Phone</p><input name=Ship_Phone id=Ship_Phone__ID type=text class="" readonly \><br>
                                         </fieldset>
                                     </div>
                                 </div>
@@ -71,11 +54,11 @@
                                 <div class="form-group">
                                     <div class="questiongroup">
                                         <fieldset class="">
-                                            <p class=check_label>Comeback Complement<sup>&trade;</sup> 215g @ USD 75.00</p><span id=Compliment__ID class="">0</span> * USD 75.00 = USD <span id=Compliment_sum__ID class=""></span>
-                                            <p class=check_label>Your Comeback Book @ UDS 50.00</p> <span id=Books__ID class="">0</span> * USD 50.00 = USD <span id=Books_sum__ID class=""></span>
+                                            <p class=check_label>Comeback Complement<sup>&trade;</sup> 215g @ USD <span id=compliment_price1__ID ></span></p><span id=Compliment__ID class="">0</span> * USD <span id=compliment_price2__ID></span> = USD <span id=Compliment_sum__ID class=""></span>
+                                            <p class=check_label>Your Comeback Book @ USD <span id=book_price1__ID ></span></p> <span id=Book__ID ></span> * USD <span id=book_price2__ID></span> = USD <span id=Book_sum__ID class=""></span>
                                             </label><br>
                                             <p></p>
-                                            <label><b>Total USD</b> <span id=Total__ID class=""></span>
+                                            <label><b>Total USD</b> <input style="font-weight: bold;width:100px" name=Total id=Total__ID type=text class=""/>
                                             </label><br>
                                         </fieldset>
                                     </div>
@@ -93,6 +76,43 @@
                                 <label><span class="">Order Number</span>
                                     <input class="form-control" type="text" name="order_number" >
                                 </label><br>
+                                <label><span class="">Book Number</span>
+                                    <input class="form-control" type="text" name="book_number" >
+                                </label><br>
+                                <label><span class="">Compliment Number</span>
+                                    <input class="form-control" type="text" name="compliment_number" >
+                                </label><br>
+                                <label><span class="">Book Price</span>
+                                    <input class="form-control" type="text" name="book_price" >
+                                </label><br>
+                                <label><span class="">Compliment Price</span>
+                                    <input class="form-control" type="text" name="compliment_price" >
+                                </label><br>
+                                <label><span class="">Date</span>
+                                    <input class="form-control" type="text" name="Date" >
+                                </label><br>
+                                <label><span class="">Numeric Time</span>
+                                    <input class="form-control" type="text" name="Numeric_Time" >
+                                </label><br>
+                                <label><span class="">Stripe ID</span>
+                                    <input class="form-control" type="text" name="Strip_ID" >
+                                </label><br>
+                                <label><span class="">Stripe Paid</span>
+                                    <input class="form-control" type="text" name="Strip_Paid" >
+                                </label><br>
+                                <button type="submit" id="submit__ID" class="btn btn-primary btn-lg">Submit</button>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="questiongroup ">
+                            <fieldset class="subquestions" style="display:none">
+                                <div class="row">
+                                    <div class=col>
+                                        <u style='cursor:pointer;margin-bottom:3px;display:inline-block' id=item_a_add__ID><i class="fa fa-plus"></i> Add an invoice item</u>
+                                        <table id=grid_item_a__ID></table>
+                                    </div>
+                                </div>
                             </fieldset>
                         </div>
                     </div>
@@ -101,141 +121,227 @@
         </div>
     </div>
     <script>
-        function F__ID() {
-            //-------------------------------------
-            VmInclude: __COMPONENT__/f/form.01.js
-            //-------------------------------------
-            m.default_load = m.load;
-            m.load = function () {
-                m.default_load();
-                if(localStorage.getItem("Bill_Name")!=undefined) $("#Bill_Name__ID").html(localStorage.getItem("Bill_Name"));
-                if(localStorage.getItem("Bill_Address_1")!=undefined) $("#Bill_Address_1__ID").html(localStorage.getItem("Bill_Address_1"));
-                if(localStorage.getItem("Bill_Address_2")!=undefined) $("#Bill_Address_2__ID").html(localStorage.getItem("Bill_Address_2"));
-                if(localStorage.getItem("Bill_City")!=undefined) $("#Bill_City__ID").html(localStorage.getItem("Bill_City"));
-                if(localStorage.getItem("Bill_State")!=undefined) $("#Bill_State__ID").html(localStorage.getItem("Bill_State"));
-                if(localStorage.getItem("Bill_Country")!=undefined) $("#Bill_Country__ID").html(localStorage.getItem("Bill_Country"));
-                if(localStorage.getItem("Bill_Zip")!=undefined) $("#Bill_Zip__ID").html(localStorage.getItem("Bill_Zip"));
-                if(localStorage.getItem("Bill_Phone")!=undefined) $("#Bill_Phone__ID").html(localStorage.getItem("Bill_Phone"));
-                if(localStorage.getItem("Email")!=undefined) $("#Email__ID").html(localStorage.getItem("Email"));
-                if(localStorage.getItem("Ship_Name")!=undefined) $("#Ship_Name__ID").html(localStorage.getItem("Ship_Name"));
-                if(localStorage.getItem("Ship_Address_1")!=undefined) $("#Ship_Address_1__ID").html(localStorage.getItem("Ship_Address_1"));
-                if(localStorage.getItem("Ship_Address_2")!=undefined) $("#Ship_Address_2__ID").html(localStorage.getItem("Ship_Address_2"));
-                if(localStorage.getItem("Ship_City")!=undefined) $("#Ship_City__ID").html(localStorage.getItem("Ship_City"));
-                if(localStorage.getItem("Ship_State")!=undefined) $("#Ship_State__ID").html(localStorage.getItem("Ship_State"));
-                if(localStorage.getItem("Ship_Country")!=undefined) $("#Ship_Country__ID").html(localStorage.getItem("Ship_Country"));
-                if(localStorage.getItem("Ship_Zip")!=undefined) $("#Ship_Zip__ID").html(localStorage.getItem("Ship_Zip"));
-                if(localStorage.getItem("Ship_Phone")!=undefined) $("#Ship_Phone__ID").html(localStorage.getItem("Ship_Phone"));
-                if(sessionStorage.getItem("compliment")!=undefined) $("#Compliment__ID").html(sessionStorage.getItem("compliment"));
-                if(sessionStorage.getItem("compliment")!=undefined) $("#Compliment_sum__ID").html((sessionStorage.getItem("compliment")*75).toFixed(2));
-                if(sessionStorage.getItem("books")!=undefined) $("#Books__ID").html(sessionStorage.getItem("books"));
-                if(sessionStorage.getItem("books")!=undefined) $("#Books_sum__ID").html((sessionStorage.getItem("books")*50).toFixed(2));
-                if(sessionStorage.getItem("subtotal")!=undefined) $("#Total__ID").html((sessionStorage.getItem("subtotal")*1).toFixed(2));
-                $('#D__ID').scrollTop(0);
-                $(window).scrollTop(0);
-                m.input.goback = 1;
+    function F__ID() {
+        //-------------------------------------
+        VmInclude: __COMPONENT__/f/form.01.js
+        VmInclude:__COMPONENT__/f/form-item-a.01.js
+        VmInclude:__COMPONENT__/f/form-item-b.01.js
+        //-------------------------------------
+        m.default_load = m.load;
+        m.load = function () {
+            m.default_load();
+            var compliment_price=sessionStorage.getItem("compliment_price");
+            var book_price=sessionStorage.getItem("book_price");
+            var compliment_val=parseInt(sessionStorage.getItem("compliment"));
+            var book_val=parseInt(sessionStorage.getItem("books"));
+            if(localStorage.getItem("Bill_Name")!=undefined) $("#Bill_Name__ID").val(localStorage.getItem("Bill_Name"));
+            if(localStorage.getItem("Bill_Address_1")!=undefined) $("#Bill_Address_1__ID").val(localStorage.getItem("Bill_Address_1"));
+            if(localStorage.getItem("Bill_Address_2")!=undefined) $("#Bill_Address_2__ID").val(localStorage.getItem("Bill_Address_2"));
+            if(localStorage.getItem("Bill_City")!=undefined) $("#Bill_City__ID").val(localStorage.getItem("Bill_City"));
+            if(localStorage.getItem("Bill_State")!=undefined) $("#Bill_State__ID").val(localStorage.getItem("Bill_State"));
+            if(localStorage.getItem("Bill_Country")!=undefined) $("#Bill_Country__ID").val(localStorage.getItem("Bill_Country"));
+            if(localStorage.getItem("Bill_Zip")!=undefined) $("#Bill_Zip__ID").val(localStorage.getItem("Bill_Zip"));
+            if(localStorage.getItem("Bill_Phone")!=undefined) $("#Bill_Phone__ID").val(localStorage.getItem("Bill_Phone"));
+            if(localStorage.getItem("Email")!=undefined) $("#Email__ID").val(localStorage.getItem("Email"));
+            if(localStorage.getItem("Ship_Name")!=undefined) $("#Ship_Name__ID").val(localStorage.getItem("Ship_Name"));
+            if(localStorage.getItem("Ship_Address_1")!=undefined) $("#Ship_Address_1__ID").val(localStorage.getItem("Ship_Address_1"));
+            if(localStorage.getItem("Ship_Address_2")!=undefined) $("#Ship_Address_2__ID").val(localStorage.getItem("Ship_Address_2"));
+            if(localStorage.getItem("Ship_City")!=undefined) $("#Ship_City__ID").val(localStorage.getItem("Ship_City"));
+            if(localStorage.getItem("Ship_State")!=undefined) $("#Ship_State__ID").val(localStorage.getItem("Ship_State"));
+            if(localStorage.getItem("Ship_Country")!=undefined) $("#Ship_Country__ID").val(localStorage.getItem("Ship_Country"));
+            if(localStorage.getItem("Ship_Zip")!=undefined) $("#Ship_Zip__ID").val(localStorage.getItem("Ship_Zip"));
+            if(localStorage.getItem("Ship_Phone")!=undefined) $("#Ship_Phone__ID").val(localStorage.getItem("Ship_Phone"));
+            if(sessionStorage.getItem("compliment")!=undefined) {
+                $("#Compliment__ID").html(sessionStorage.getItem("compliment"));
+                $("#Compliment_sum__ID").html((compliment_val*parseInt(compliment_price)).toFixed(2));
+                $('input[name=compliment_number]').val(sessionStorage.getItem("compliment"));
+                $('input[name=compliment_price]').val(compliment_price);
             }
-            //--------------------------------------------------------          
-            $('#D__ID').css('min-height', $vm.min_height);
-            //--------------------------------------------------------
-            $("input[name='Delivery']").change(function(){
-                if($("input[name='Delivery']").is(":checked") == false ){
-                    $('#shipping__ID').prop('style','display:block!important');
+            if(sessionStorage.getItem("books")!=undefined) {
+                $("#Book__ID").html(sessionStorage.getItem("books"));
+                $("#Book_sum__ID").html((book_val*parseInt(book_price)).toFixed(2));
+                $('input[name=book_number]').val(sessionStorage.getItem("books"));
+                $('input[name=book_price]').val(book_price);
+            }
+            if(sessionStorage.getItem("subtotal")!=undefined) $("#Total__ID").val((sessionStorage.getItem("subtotal")*1).toFixed(2));
+            $('#compliment_price1__ID').val(compliment_price);
+            $('#compliment_price2__ID').html(compliment_price);
+            $('#book_price1__ID').html(book_price);
+            $('#book_price2__ID').html(book_price);
+            $('#D__ID').scrollTop(0);
+            $(window).scrollTop(0);
+            m.input.goback = 1;
+        }
+        //--------------------------------------------------------          
+        $('#D__ID').css('min-height', $vm.min_height);
+        //--------------------------------------------------------
+        $("input[name='Delivery']").change(function(){
+            if($("input[name='Delivery']").is(":checked") == false ){
+                $('#shipping__ID').prop('style','display:block!important');
+            }
+            else {
+                $('#shipping__ID').hide();
+            }
+        })
+        //--------------------------------------------------------
+        $('#next3__ID').on('click',function(){
+            if($("input[name='Ship_Name']").val()=="") $("input[name='Ship_Name']").val($("input[name='Bill_Name']").val())
+            if($("input[name='Ship_Address_1']").val()=="") $("input[name='Ship_Address_1']").val($("input[name='Bill_Address_1']").val())
+            if($("input[name='Ship_Address_2']").val()=="") $("input[name='Ship_Address_2']").val($("input[name='Bill_Address_2']").val())
+            if($("input[name='Ship_City']").val()=="") $("input[name='Ship_City']").val($("input[name='Bill_City']").val())
+            if($("input[name='Ship_State']").val()=="") $("input[name='Ship_State']").val($("input[name='Bill_State']").val())
+            if($("input[name='Ship_Country']").val()=="") $("input[name='Ship_Country']").val($("input[name='Bill_Country']").val())
+            if($("input[name='Ship_Zip']").val()=="") $("input[name='Ship_Zip']").val($("input[name='Bill_Zip']").val())
+            if($("input[name='Ship_Phone']").val()=="") $("input[name='Ship_Phone']").val($("input[name='Bill_Phone']").val())
+            localStorage.setItem("Bill_Name", $("input[name='Bill_Name']").val());
+            localStorage.setItem("Bill_Address_1", $("input[name='Bill_Address_1']").val());
+            localStorage.setItem("Bill_Address_2", $("input[name='Bill_Address_2']").val());
+            localStorage.setItem("Bill_City", $("input[name='Bill_City']").val());
+            localStorage.setItem("Bill_State", $("input[name='Bill_State']").val());
+            localStorage.setItem("Bill_Country", $("input[name='Bill_Country']").val());
+            localStorage.setItem("Bill_Zip", $("input[name='Bill_Zip']").val());
+            localStorage.setItem("Bill_Phone", $("input[name='Bill_Phone']").val());
+            localStorage.setItem("Ship_Name", $("input[name='Ship_Name']").val());
+            localStorage.setItem("Ship_Address_1", $("input[name='Ship_Address_1']").val());
+            localStorage.setItem("Ship_Address_2", $("input[name='Ship_Address_2']").val());
+            localStorage.setItem("Ship_City", $("input[name='Ship_City']").val());
+            localStorage.setItem("Ship_State", $("input[name='Ship_State']").val());
+            localStorage.setItem("Ship_Country", $("input[name='Ship_Country']").val());
+            localStorage.setItem("Ship_Zip", $("input[name='Ship_Zip']").val());
+            localStorage.setItem("Ship_Phone", $("input[name='Ship_Phone']").val());
+            localStorage.setItem("Email", $("input[name='Email']").val());
+            $vm.load_module('checkout2','',{});
+        });
+        //-------------------------------
+        $('#back3__ID').on('click',function(){
+            $vm.load_module('checkout1','',{});
+        });
+        //-------------------------------
+        $('#next3__ID').on('click',function(){
+            if($('#Total__ID').val()!=undefined && $('#Total__ID').val()!='0.00'){
+                event.preventDefault();
+                //-------------------------------
+                //Date and Timestamp
+                var d=new Date()
+                var timestamp=Math.floor(d.getTime()/1000.0)
+                $("input[name='Numeric_Time']").val(timestamp)
+                var am_date=(d.getMonth()+1)+'/'+d.getDate()+'/'+d.getFullYear()+' '+d.getHours()+':'+d.getMinutes();
+                $("input[name='Date']").val(am_date);
+                //-------------------------------
+                //Create and Item List Order_ID,Line_ID,Product_ID,Product_Code,Quantity,Unit_Price,_Remove
+                var line=0;
+                m.item_a_records=[];
+                //m.item_a_records=[{"Order_ID":"","Line_ID":"","Product_ID":"","Product_Code":"","Quantity":"","Unit_Price":""}]
+                m.item_a_create_header();
+//                m.item_a_records=[];
+                if(parseInt(sessionStorage.getItem("compliment"))>0){
+                    line++;
+                    m.item_a_add()
+                    m.item_a_set_value(line.toString(),m.item_a_records,0,"Line_ID");
+                    m.item_a_set_value('Comeback Compliment',m.item_a_records,0,"Product_ID");
+                    m.item_a_set_value('CC215',m.item_a_records,0,"Product_Code");
+                    m.item_a_set_value(sessionStorage.getItem("compliment"),m.item_a_records,0,"Quantity");
+                    m.item_a_set_value(sessionStorage.getItem("compliment_price"),m.item_a_records,0,"Unit_Price");
+                    m.item_a_set_value((parseInt(sessionStorage.getItem("compliment_price"))*parseInt(sessionStorage.getItem("compliment"))).toFixed(2),m.item_a_records,0,"Amount");
                 }
-                else {
-                    $('#shipping__ID').hide();
+                if(parseInt(sessionStorage.getItem("books"))>0){
+                    line++;
+                    m.item_a_add()
+                    m.item_a_set_value(line.toString(),m.item_a_records,0,"Line_ID");
+                    m.item_a_set_value('Comeback Book',m.item_a_records,0,"Product_ID");
+                    m.item_a_set_value('CB1',m.item_a_records,0,"Product_Code");
+                    m.item_a_set_value(sessionStorage.getItem("books"),m.item_a_records,0,"Quantity");
+                    m.item_a_set_value(sessionStorage.getItem("book_price"),m.item_a_records,0,"Unit_Price");
+                    m.item_a_set_value((parseInt(sessionStorage.getItem("book_price"))*parseInt(sessionStorage.getItem("books"))).toFixed(2),m.item_a_records,0,"Amount");
                 }
-            })
-            //--------------------------------------------------------
-            $('#next3__ID').on('click',function(){
-                if($("input[name='Ship_Name']").val()=="") $("input[name='Ship_Name']").val($("input[name='Bill_Name']").val())
-                if($("input[name='Ship_Address_1']").val()=="") $("input[name='Ship_Address_1']").val($("input[name='Bill_Address_1']").val())
-                if($("input[name='Ship_Address_2']").val()=="") $("input[name='Ship_Address_2']").val($("input[name='Bill_Address_2']").val())
-                if($("input[name='Ship_City']").val()=="") $("input[name='Ship_City']").val($("input[name='Bill_City']").val())
-                if($("input[name='Ship_State']").val()=="") $("input[name='Ship_State']").val($("input[name='Bill_State']").val())
-                if($("input[name='Ship_Country']").val()=="") $("input[name='Ship_Country']").val($("input[name='Bill_Country']").val())
-                if($("input[name='Ship_Zip']").val()=="") $("input[name='Ship_Zip']").val($("input[name='Bill_Zip']").val())
-                if($("input[name='Ship_Phone']").val()=="") $("input[name='Ship_Phone']").val($("input[name='Bill_Phone']").val())
-                localStorage.setItem("Bill_Name", $("input[name='Bill_Name']").val());
-                localStorage.setItem("Bill_Address_1", $("input[name='Bill_Address_1']").val());
-                localStorage.setItem("Bill_Address_2", $("input[name='Bill_Address_2']").val());
-                localStorage.setItem("Bill_City", $("input[name='Bill_City']").val());
-                localStorage.setItem("Bill_State", $("input[name='Bill_State']").val());
-                localStorage.setItem("Bill_Country", $("input[name='Bill_Country']").val());
-                localStorage.setItem("Bill_Zip", $("input[name='Bill_Zip']").val());
-                localStorage.setItem("Bill_Phone", $("input[name='Bill_Phone']").val());
-                localStorage.setItem("Ship_Name", $("input[name='Ship_Name']").val());
-                localStorage.setItem("Ship_Address_1", $("input[name='Ship_Address_1']").val());
-                localStorage.setItem("Ship_Address_2", $("input[name='Ship_Address_2']").val());
-                localStorage.setItem("Ship_City", $("input[name='Ship_City']").val());
-                localStorage.setItem("Ship_State", $("input[name='Ship_State']").val());
-                localStorage.setItem("Ship_Country", $("input[name='Ship_Country']").val());
-                localStorage.setItem("Ship_Zip", $("input[name='Ship_Zip']").val());
-                localStorage.setItem("Ship_Phone", $("input[name='Ship_Phone']").val());
-                localStorage.setItem("Email", $("input[name='Email']").val());
-                $vm.load_module('checkout2','',{});
-            });
-            //-------------------------------
-            $('#back3__ID').on('click',function(){
-                $vm.load_module('checkout1','',{});
-            });
-            //-------------------------------
-            $('#next3__ID').on('click',function(){
-                //$vm.alert("Payment")
-                //$vm.load_module('payment','',{});
-
-
-    			event.preventDefault();
-				
-
-
+//                $('#submit__ID').click();
+                
                 $vm.stripe_shorpping_cart=[
-                    {item:"compliment", qty:sessionStorage.getItem("compliment"),amount:"123.00"},
-                    //{item:"Pen", qty:"2",amount:"18.00"}
+                    {item:"compliment", qty:sessionStorage.getItem("compliment"),amount:sessionStorage.getItem("compliment_price")},
+                    {item:"book", qty:sessionStorage.getItem("book"),amount:sessionStorage.getItem("book_price")},
                 ]
-                $vm.stripe_shorpping_total_amount="12300";
-
-
-				sessionStorage.setItem("shopping_items",JSON.stringify($vm.stripe_shorpping_cart));
-				sessionStorage.setItem("shopping_amount",$vm.stripe_shorpping_total_amount);
-				
-				var url=$vm.module_list["payment"].url;
-				window.open(url);
-                
-                
+                $vm.stripe_shorpping_total_amount=(sessionStorage.getItem("subtotal")*100).toString();
+                //-------------------------------
+                sessionStorage.setItem("shopping_items",JSON.stringify($vm.stripe_shorpping_cart));
+                sessionStorage.setItem("shopping_amount",$vm.stripe_shorpping_total_amount);
+                //-------------------------------			
+                var url=$vm.module_list["payment"].url;
                 localStorage.setItem("stripe-result","");
+                window.open(url);
+                //-------------------------------
+                // Wait for response
+                //-------------------------------
                 var I=0;
                 var loop=setInterval(function (){
                     var R=localStorage.getItem("stripe-result");
                     if(R!=""){
                         clearInterval(loop); 
-                        alert(R);
+                        console.log(R);
                         var jR=JSON.parse(R);
-                        alert(jR.status);
+                        if(jR.status=='succeeded'){
+                            m.item_b_records=[];
+                            m.item_b_create_header();
+                            m.item_b_add();
+                            m.item_b_set_value(jR.id,m.item_b_records,0,"id");
+                            m.item_b_set_value(jR.object,m.item_b_records,0,"object");
+                            m.item_b_set_value(jR.amount,m.item_b_records,0,"amount");
+                            m.item_b_set_value(jR.canceled_at,m.item_b_records,0,"canceled_at");
+                            m.item_b_set_value(jR.cancellation_reason,m.item_b_records,0,"cancellation_reason");
+                            m.item_b_set_value(jR.capture_method,m.item_b_records,0,"capture_method");
+                            m.item_b_set_value(jR.client_secret,m.item_b_records,0,"client_secret");
+                            m.item_b_set_value(jR.confirmation_method,m.item_b_records,0,"confirmation_method");
+                            m.item_b_set_value(jR.created,m.item_b_records,0,"created");
+                            m.item_b_set_value(jR.currency,m.item_b_records,0,"currency");
+                            m.item_b_set_value(jR.description,m.item_b_records,0,"description");
+                            m.item_b_set_value(jR.last_payment_error,m.item_b_records,0,"last_payment_error");
+                            m.item_b_set_value(jR.livemode,m.item_b_records,0,"livemode");
+                            m.item_b_set_value(jR.next_action,m.item_b_records,0,"next_action");
+                            m.item_b_set_value(jR.payment_method,m.item_b_records,0,"payment_method");
+                            m.item_b_set_value(jR.payment_method_types,m.item_b_records,0,"payment_method_types");
+                            m.item_b_set_value(jR.receipt_email,m.item_b_records,0,"receipt_email");
+                            m.item_b_set_value(jR.setup_future_usage,m.item_b_records,0,"setup_future_usage");
+                            m.item_b_set_value(jR.shipping,m.item_b_records,0,"shipping");
+                            m.item_b_set_value(jR.source,m.item_b_records,0,"source");
+                            m.item_b_set_value(jR.status,m.item_b_records,0,"status");
+                            $('#submit__ID').click();
+                        }
+                        else{
+                            $vm.alert("Payment cancelled.<br><span style='font-weight:bold'>Cancellation reason: "+jR.cancellation_reason+"</span><br>Please try again.")
+                        }
                     }
                     I++; if(I>100){
                         clearInterval(loop); 
                         alert("Timeout, 10s");
                     }
                 },100);
-                //-------------------------------------
-
-
-
-
-            });
-            //-------------------------------
-            $(this).scrollTop(0);
-            //-------------------------------------
-			var before_submit = m.before_submit;
-			m.before_submit = function (data, index) {
-                //var I1 = $('#F__ID input[name=sequence_no').val(); if (I1 != '' && I1 != '-') index.I1 = parseInt(I1);
-				return before_submit(data, index);
-			}
-            //-------------------------------------
-            m.after_insert = function (data, res) {
             }
-			//-------------------------------------
+            else{ $vm.alert("Your shopping cart is empty.")}
+        });
+        //--------------------------------------------------------
+        m.item_a_fields="Order_ID,Line_ID,Product_ID,Product_Code,Quantity,Unit_Price,Amount,_Remove";
+        m.item_b_fields="id,object,amount,canceled_at,cancellation_reason,capture_method,client_secret,confirmation_method,created,currency,description,last_payment_error,livemode,next_action,payment_method,payment_method_types,receipt_email,setup_future_usage,shipping,source,status,_Remove";
+        //--------------------------------------------------------
+        m.before_submit=function(data,index){
+            data.items=m.item_a_get_data();
+            data.stripe=m.item_b_get_data();
+            return true;
         }
+        //--------------------------------------------------------          
+        m.after_insert=function(data,res){  after_submit(data,res); }
+        //--------------------------------------------------------
+        var after_submit=function(data,res){
+            sessionStorage.setItem("compliment_price","");
+            sessionStorage.setItem("book_price","");
+            sessionStorage.setItem("compliment","0");
+            sessionStorage.setItem("books","0");
+            $vm.load_module('receipt','',{record:res.result.ops[0]});
+        }
+        //--------------------------------------------------------
+
+        //-------------------------------
+        $(this).scrollTop(0);
+        //-------------------------------------
+}
     </script>
     <style>
 .check_label{
@@ -258,12 +364,12 @@
     letter-spacing: 0.2rem;
 }
 #D__ID input {
-    padding: 4px;
-    font-size: 18px;
+    font-size: 15px;
     -webkit-appearance: none; 
     -moz-appearance: none; 
     border: 2px solid rgb(233, 230, 222); /* Here */
     background: rgb(233, 230, 222);
+    width: 100%;
 }
 #D__ID .vlf {
     border-left: 1px solid rgb( 0,0,0,0.3);

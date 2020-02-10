@@ -1,10 +1,11 @@
 (function(){
     //-------------------------------------------------------------------------------------
     var modules={
-        "cart":     {url:"$H/m/cart.html",table:"comeback-cart"},
-        "footer":   {url:"$H/0/footer.html", Table:"comeback-email-address"},
+        "cart":     {url:"$H/m/cart.html",Table:"comeback-cart"},
+        "footer":   {url:"$H/0/footer.html",Table:"comeback-email-address"},
         "checkout1":{url:"$H/m/checkout1.html"},
-        "checkout2":{url:"$H/m/checkout2.html"},
+        "checkout2":{url:"$H/m/checkout2.html",Table:"comeback-order"},
+        "receipt":{url:"$H/m/receipt.html",Table:"comeback-order"},
         "p2":       {url:"$H/m/page-02.html",router:1},
         "p3":       {url:"$H/m/page-03.html",router:1},
         "p4":       {url:"$H/m/page-04.html",router:1},

@@ -19,7 +19,7 @@
         <!----------------------------------------------->
         <script>
             //------------------------------------
-            $vm={};$vm.ver=[0.25,0.25];
+            $vm={};$vm.ver=[0.26,0.26];
             $vm.hosting_path=window.location.href.substring(0, window.location.href.split('?')[0].lastIndexOf('/'));
             if(window.location.hostname=='127.0.0.1' || window.location.hostname=='localhost') $vm.localhost=true;
             //------------------------------------
@@ -30,7 +30,7 @@
                 "about":	    {url:"$H/0/about.html"},
                 "frame":	    {url:"$H/0/frame.html"},
                 "app":	        {url:"$H/0/app.html"},
-                "header":	    {url:"$H/0/header.html",Table:"comeback-item-list"},
+                "header":	    {url:"$H/0/header.html",Table:"comeback-charge-list"},
                 "footer":	    {url:"$H/0/footer.html"},
             };
             for(p in $vm.module_list) $vm.module_list[p].url=$vm.module_list[p].url.replace('$H',$vm.hosting_path);

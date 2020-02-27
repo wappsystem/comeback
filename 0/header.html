@@ -52,6 +52,10 @@
             document.getElementById("mySidenav__ID").style.width = "0";
         }
         $vm.openCart=function() {
+            compliment_price=sessionStorage.getItem("compliment_price");
+            book_price=sessionStorage.getItem("book_price");
+            compliment_val=parseInt(sessionStorage.getItem("compliment"));
+            book_val=parseInt(sessionStorage.getItem("books"));
             if($(window).width()>600){
                 document.getElementById("rightsidenav__ID").style.width = "550px";
             }
@@ -137,7 +141,7 @@
         //------------------------------------
         $('#view_cart__ID').on('click',function(){
             $vm.closeCart();
-           $vm.load_module('cart','',{});
+            $vm.load_module('cart','',{});
         })
 
         /*
